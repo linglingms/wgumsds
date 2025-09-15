@@ -1,1 +1,30 @@
-# This is my data analytics projects that I have done during my graduate program at WGU. I have in depth knowledge in topics like machine learning, neural networks, and NLP. 
+# WGU Data Science Projects
+
+This repository contains coursework and projects from my WGU Master’s in Data Science program.  
+Each folder corresponds to a different course or task.
+
+---
+
+## 📂 Repository Structure
+
+- **D598 Analytics Programming**  
+  Python-based programming assignments focusing on analytics and data manipulation.
+
+- **D600 Statistical Data Mining**  
+  Projects involving statistical models and data mining techniques.
+
+- **D602 Deployment Task 2 & Task 3**  
+  FastAPI projects for deploying machine learning models.
+
+- **D603 Machine Learning**  
+  Implementations of supervised and unsupervised learning models.
+
+---
+
+## 🚀 How to Use
+
+1. Clone the repo:
+   ```bash
+   git clone https://github.com/YOUR_USERNAME/YOUR_REPO.git
+   cd YOUR_REPO
+

@@ -7,55 +7,75 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+
+  <!-- Header -->
   <header>
-    <h1>Warren Buenarte</h1>
-    <h2>Data Scientist | Biotech & AI Enthusiast</h2>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-    </nav>
+    <div class="container">
+      <h1>Warren Buenarte</h1>
+      <p class="tagline">Data Scientist | Biotech & AI Enthusiast</p>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
   </header>
 
-  <section id="about">
-    <h3>About Me</h3>
+  <!-- About Section -->
+  <section id="about" class="container">
+    <h2>About Me</h2>
     <p>
-      I’m a data scientist passionate about the intersection of <b>biotechnology</b> and <b>artificial intelligence</b>. 
-      My background in biomedical science and data analytics has fueled my interest in developing data-driven insights 
-      for healthcare and biotech innovation.
+      I’m a data scientist passionate about <strong>biotechnology</strong> and <strong>AI</strong>. 
+      With a background in biomedical science and a Master’s in Data Science from WGU, I specialize 
+      in turning complex datasets into actionable insights and building tools for real-world applications.
     </p>
   </section>
 
-  <section id="projects">
-    <h3>Featured Projects</h3>
+  <!-- Projects Section -->
+  <section id="projects" class="container">
+    <h2>Projects</h2>
     <div class="project-list">
-      <div class="project">
-        <h4>🧬 Biotech Data Explorer</h4>
-        <p>A Python-based data exploration tool for analyzing biological datasets and visualizing gene expression trends.</p>
+      <div class="project-card">
+        <h3>🧬 Biotech Data Explorer</h3>
+        <p>Python tool for analyzing biological datasets and visualizing gene expression trends.</p>
         <a href="https://github.com/linglingms/biotech-data-explorer" target="_blank">View on GitHub →</a>
       </div>
-      <div class="project">
-        <h4>🧠 Sentiment Analysis on Amazon Reviews</h4>
-        <p>A deep learning NLP model (LSTM) that classifies customer sentiment from product reviews.</p>
+      <div class="project-card">
+        <h3>🧠 Sentiment Analysis on Amazon Reviews</h3>
+        <p>Deep learning NLP model (LSTM) classifying customer sentiment from product reviews.</p>
         <a href="https://github.com/linglingms/amazon-sentiment" target="_blank">View on GitHub →</a>
       </div>
-      <div class="project">
-        <h4>📦 Flight Delay Predictor API</h4>
-        <p>A FastAPI-based deployment of a machine learning model predicting flight delays using real-world datasets.</p>
+      <div class="project-card">
+        <h3>📦 Flight Delay Predictor API</h3>
+        <p>FastAPI-based deployment of a machine learning model predicting flight delays.</p>
         <a href="https://github.com/linglingms/flight-delay-api" target="_blank">View on GitHub →</a>
       </div>
     </div>
   </section>
 
-  <section id="contact">
-    <h3>Contact</h3>
-    <p>Let’s connect! You can reach me at:</p>
-    <p><a href="mailto:warrenbuenarte@gmail.com">warrenbuenarte@gmail.com</a></p>
-    <p><a href="https://github.com/linglingms" target="_blank">github.com/linglingms</a></p>
+  <!-- Contact Section -->
+  <section id="contact" class="container">
+    <h2>Contact</h2>
+    <p>📧 <a href="mailto:warrenbuenarte@gmail.com">warrenbuenarte@gmail.com</a></p>
+    <p>💻 <a href="https://github.com/linglingms" target="_blank">github.com/linglingms</a></p>
   </section>
 
+  <!-- Footer -->
   <footer>
-    <p>© 2025 Warren Buenarte. All rights reserved.</p>
+    <p>© 2025 Warren Buenarte</p>
   </footer>
+
+  <!-- Smooth Scroll Script -->
+  <script>
+    document.querySelectorAll('nav a').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
+
 </body>
 </html>

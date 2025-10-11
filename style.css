@@ -161,4 +161,34 @@ footer {
   }
 }
 
+.edu-item, .exp-item {
+  margin-bottom: 1.5rem;
+}
+
+.edu-item h3, .exp-item h3 {
+  color: var(--accent);
+  margin-bottom: 0.3rem;
+}
+
+.edu-item p, .exp-item p, .exp-item ul {
+  color: var(--fg);
+  margin: 0.3rem 0;
+}
+
+.exp-item ul {
+  padding-left: 1.5rem;
+}
+
+.resume-btn {
+  border: 1px solid var(--accent);
+  padding: 0.3rem 0.8rem;
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+.resume-btn:hover {
+  background: var(--accent);
+  color: var(--bg);
+}
+
 

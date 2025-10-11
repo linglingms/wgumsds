@@ -1,222 +1,177 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Warren Buenarte | Data Scientist</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Warren Buenarte | Portfolio</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-  <!-- Animated Gradient Background Overlay -->
   <div class="gradient-bg"></div>
 
   <!-- Header -->
   <header>
-    <div class="container header-container">
-      <img src="profile.jpg" alt="Warren Buenarte" class="profile-pic" />
+    <div class="header-container container">
+      <img src="profile.jpg" alt="Warren Buenarte" class="profile-pic">
       <div class="header-text">
         <h1>Warren Buenarte</h1>
-        <p class="tagline">💻 Data Scientist | 🧬 Biotech & AI Enthusiast</p>
+        <p class="tagline">Data Scientist | Biotech & AI Enthusiast</p>
         <nav>
-          <a href="#about">About</a>
-          <a href="#education">Education</a>
-          <a href="#skills">Skills</a>
-          <a href="#experience">Experience</a>
           <a href="#projects">Projects</a>
+          <a href="#skills">Skills</a>
+          <a href="#education">Education</a>
+          <a href="#experience">Experience</a>
           <a href="#contact">Contact</a>
-          <a href="Warren_Buenarte_Resume.pdf" target="_blank" class="resume-btn">Resume</a>
         </nav>
+        <a href="resume.pdf" target="_blank" class="resume-btn">📄 Resume</a>
       </div>
     </div>
   </header>
 
-  <!-- About Section -->
-  <section id="about" class="container section fade-in">
-    <h2>About Me 🤖</h2>
-    <p>
-      I’m a data scientist passionate about <strong>biotechnology</strong> and <strong>AI</strong>.  
-      I specialize in turning complex datasets into actionable insights and building tools that solve real-world problems in healthcare and biotech.
-    </p>
-  </section>
+  <main class="container">
 
-  <!-- Education Section -->
-  <section id="education" class="container section fade-in">
-    <h2>Education 🎓</h2>
-    <div class="edu-item">
-      <h3>Western Governors University, Seattle, WA</h3>
-      <p><strong>Master of Science in Data Science</strong> — June 2025</p>
-      <p>Relevant Coursework: Optimization, Deployment, Data Management, Advanced Analytics, Statistical Data Mining, Machine Learning</p>
-    </div>
-    <div class="edu-item">
-      <h3>University of Washington, Seattle, WA</h3>
-      <p><strong>Bachelor of Science in Biology & Bachelor of Arts in Biochemistry</strong> — Dec 2024</p>
-      <p>Extracurriculars: HCP, Dub Hacks, DubsTech Datathon</p>
-      <p>Relevant Coursework: Microbiology Lab, Lab Techniques, Software Engineering for Molecular Science, Human Anatomy, Biostatistics, Drug Science, Epidemiology</p>
-    </div>
-    <div class="edu-item">
-      <h3>Highline College, Des Moines, WA</h3>
-      <p><strong>Associate of Arts in Biology</strong> — Aug 2022</p>
-      <p>Relevant Coursework: Majors Cellular/Animal Labs, Personal Health Science, Research Paper, Communication Studies, Principles of Marketing, Business English</p>
-    </div>
-  </section>
-
-  <!-- Skills Section -->
-  <section id="skills" class="container section fade-in">
-    <h2>Skills & Tools 🛠️</h2>
-    <div class="skills-grid">
-      <div class="skill">🐍 Python</div>
-      <div class="skill">📊 R</div>
-      <div class="skill">☕ Java</div>
-      <div class="skill">💻 C++</div>
-      <div class="skill">🌐 JS/HTML/CSS</div>
-      <div class="skill">🧪 MATLAB</div>
-      <div class="skill">🧬 Bioinformatics</div>
-      <div class="skill">📦 Docker / Git</div>
-      <div class="skill">📈 ML / AI</div>
-      <div class="skill">📊 Tableau / PowerBI</div>
-      <div class="skill">🔬 Lab Techniques</div>
-    </div>
-  </section>
-
-  <!-- Experience Section -->
-  <section id="experience" class="container section fade-in">
-    <h2>Experience 💼</h2>
-
-    <div class="exp-item">
-      <h3>Experis at Meta — Data Quality Analyst Intern 💡</h3>
-      <p><em>Mar 2025 – Jun 2025 | Redmond, WA</em></p>
-      <ul>
-        <li>Analyzed data quality and presented weekly reports to XR tech team.</li>
-        <li>Trained and gave feedback on Meta AI models to improve responses.</li>
-      </ul>
-    </div>
-
-    <div class="exp-item">
-      <h3>UW Medicine — Medical Scribe 🏥</h3>
-      <p><em>Dec 2024 – Mar 2025 | Seattle, WA</em></p>
-      <ul>
-        <li>Charted patient encounters in EMR during clinical visits.</li>
-        <li>Documented histories, exams, and assessments maintaining HIPAA compliance.</li>
-      </ul>
-    </div>
-
-    <div class="exp-item">
-      <h3>SEFS Quantitative Ecology Lab — Data Processing Intern 🌿</h3>
-      <p><em>Sep 2024 – Dec 2024 | Seattle, WA</em></p>
-      <ul>
-        <li>Classified species using camera imaging and statistical analysis.</li>
-        <li>Processed data with neural networks analyzing human recreation impact on wildlife.</li>
-      </ul>
-    </div>
-
-    <div class="exp-item">
-      <h3>American College of Cardiology — Research Assistant ❤️</h3>
-      <p><em>Feb 2022 – Mar 2023 | Seattle, WA</em></p>
-      <ul>
-        <li>Participated in global programs introducing students to cardiology and cardiac bioengineering.</li>
-        <li>Engaged in research discussions on cardiovascular innovations and healthcare technology.</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- Projects Section -->
-  <section id="projects" class="container section fade-in">
-    <h2>Projects 🚀</h2>
-    <div class="project-grid">
-      <div class="project-card">
-        <h3>D600 Task 1</h3>
-        <a href="D600 Task 1.ipynb" target="_blank">View Notebook →</a>
+    <!-- Projects -->
+    <section id="projects" class="section fade-in">
+      <h2>💻 Projects</h2>
+      <div class="project-grid">
+        <div class="project-card fade-in">
+          <h3>D600 Task 1</h3>
+          <p>Data analysis using Python & pandas</p>
+        </div>
+        <div class="project-card fade-in">
+          <h3>D600 Task 3 PCA</h3>
+          <p>Principal Component Analysis project</p>
+        </div>
+        <div class="project-card fade-in">
+          <h3>D600 Task 2 Logistic Regression</h3>
+          <p>Logistic regression analysis in Python</p>
+        </div>
+        <div class="project-card fade-in">
+          <h3>D601 Interactive Dashboard</h3>
+          <p>Dashboard creation with Tableau</p>
+        </div>
+        <div class="project-card fade-in">
+          <h3>D603 Time Series Modeling</h3>
+          <p>Time series modeling with Python</p>
+        </div>
+        <div class="project-card fade-in">
+          <h3>D606 Capstone Task 2</h3>
+          <p>Data science capstone project</p>
+        </div>
       </div>
-      <div class="project-card">
-        <h3>D600 Task 3 – PCA</h3>
-        <a href="D600 Task 3 Principal Component Analysis.ipynb" target="_blank">View Notebook →</a>
-      </div>
-      <div class="project-card">
-        <h3>D600 Task 2 – Logistic Regression</h3>
-        <a href="D600_Task_2_Logistic_Regression_Analysis.ipynb" target="_blank">View Notebook →</a>
-      </div>
-      <div class="project-card">
-        <h3>D601 Task 1 – Interactive Dashboard</h3>
-        <a href="D601 Task 1 Create an Interactive Dashboard.twbx" target="_blank">View Dashboard →</a>
-      </div>
-      <div class="project-card">
-        <h3>D603 Task 3 – Time Series Modeling</h3>
-        <a href="D603 Task 3 Time Series Modeling.ipynb" target="_blank">View Notebook →</a>
-      </div>
-      <div class="project-card">
-        <h3>D606 Capstone Task 2</h3>
-        <a href="D606 Data Science Capstone Task 2.ipynb" target="_blank">View Notebook →</a>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Contact Section -->
-  <section id="contact" class="container section fade-in">
-    <h2>Contact 📬</h2>
-    <p>📧 <a href="mailto:warrenbuenarte@gmail.com">warrenbuenarte@gmail.com</a></p>
-    <p>📞 253-202-4706</p>
-    <p>💻 <a href="https://www.linkedin.com/in/warren05" target="_blank">linkedin.com/in/warren05</a></p>
-    <p>🌍 Willing to relocate at own expense</p>
-  </section>
+    <!-- Skills -->
+    <section id="skills" class="section fade-in">
+      <h2>🛠 Skills</h2>
+      <div class="skills-grid">
+        <div class="skill fade-in">Python</div>
+        <div class="skill fade-in">Java</div>
+        <div class="skill fade-in">C++</div>
+        <div class="skill fade-in">JavaScript</div>
+        <div class="skill fade-in">R</div>
+        <div class="skill fade-in">Tableau</div>
+        <div class="skill fade-in">PowerBI</div>
+        <div class="skill fade-in">TensorFlow</div>
+        <div class="skill fade-in">PyTorch</div>
+      </div>
+    </section>
 
-  <!-- Footer -->
-  <footer>
-    <p>© 2025 Warren Buenarte</p>
-  </footer>
+    <!-- Education -->
+    <section id="education" class="section fade-in">
+      <h2>🎓 Education</h2>
+      <div class="edu-item fade-in">
+        <h3>Western Governors University - MS Data Science, 2025</h3>
+        <p>Relevant Coursework: Optimization, Deployment, Data Management, Machine Learning</p>
+      </div>
+      <div class="edu-item fade-in">
+        <h3>University of Washington - BS Biology & BA Biochemistry, 2024</h3>
+        <p>Extracurriculars: HCP, Dub Hacks, DubsTech Datathon</p>
+      </div>
+      <div class="edu-item fade-in">
+        <h3>Highline College - AA Biology, 2022</h3>
+      </div>
+    </section>
 
-  <!-- Back to Top Button -->
-  <button id="back-to-top">⬆️ Top</button>
+    <!-- Experience -->
+    <section id="experience" class="section fade-in">
+      <h2>💼 Experience</h2>
+      <div class="exp-item fade-in">
+        <h3>Experis at Meta - Data Quality Analyst Intern</h3>
+        <ul>
+          <li>Analyzed data quality and presented reports within XR tech team</li>
+          <li>Trained and improved Meta AI models</li>
+        </ul>
+      </div>
+      <div class="exp-item fade-in">
+        <h3>UW Medicine - Medical Scribe</h3>
+        <ul>
+          <li>Charted patient encounters in EMR during clinical visits</li>
+          <li>Documented histories, exams, and assessments maintaining HIPAA compliance</li>
+        </ul>
+      </div>
+      <div class="exp-item fade-in">
+        <h3>SEFS Quantitative Ecology Lab - Data Processing Intern</h3>
+        <ul>
+          <li>Classified species using camera imaging & statistical analysis</li>
+          <li>Processed data with neural networking techniques under supervision</li>
+        </ul>
+      </div>
+      <div class="exp-item fade-in">
+        <h3>American College of Cardiology - Research Assistant</h3>
+        <ul>
+          <li>Participated in global cardiology program with seminars & networking</li>
+          <li>Engaged in research discussions on cardiovascular innovations</li>
+        </ul>
+      </div>
+    </section>
 
-  <!-- Scripts -->
+    <!-- Contact -->
+    <section id="contact" class="section fade-in">
+      <h2>📬 Contact</h2>
+      <p>Email: <a href="mailto:warrenbuenarte@gmail.com">warrenbuenarte@gmail.com</a></p>
+      <p>Phone: 253-202-4706</p>
+      <p>LinkedIn: <a href="https://www.linkedin.com/in/warren05" target="_blank">linkedin.com/in/warren05</a></p>
+    </section>
+
+  </main>
+
+  <!-- Back to top -->
+  <button id="back-to-top">⬆️</button>
+
+  <!-- JS -->
   <script>
-    // Smooth scroll for nav
-    document.querySelectorAll('
+    // Fade-in on scroll
+    const faders = document.querySelectorAll('.fade-in');
+    const appearOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
+    const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(entry => {
+        if(!entry.isIntersecting) return;
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      });
+    }, appearOptions);
+    faders.forEach(fader => appearOnScroll.observe(fader));
 
-                              <script>
-// Fade-in on scroll
-const faders = document.querySelectorAll('.fade-in');
+    // Smooth scroll for nav links
+    document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
 
-const appearOptions = {
-  threshold: 0.1,
-  rootMargin: "0px 0px -50px 0px"
-};
-
-const appearOnScroll = new IntersectionObserver(function(entries, observer) {
-  entries.forEach(entry => {
-    if(!entry.isIntersecting) return;
-    entry.target.classList.add('visible');
-    observer.unobserve(entry.target);
-  });
-}, appearOptions);
-
-faders.forEach(fader => {
-  appearOnScroll.observe(fader);
-});
-
-// Smooth scroll for nav links
-document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function(e) {
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute('href'));
-    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  });
-});
-
-// Back to top button
-const backToTop = document.getElementById('back-to-top');
-
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 300) {
-    backToTop.style.display = 'block';
-  } else {
-    backToTop.style.display = 'none';
-  }
-});
-
-backToTop.addEventListener('click', () => {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-});
-</script>
+    // Back to top button
+    const backToTop = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+      backToTop.style.display = (window.scrollY > 300) ? 'block' : 'none';
+    });
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>
 
 

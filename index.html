@@ -8,6 +8,9 @@
 </head>
 <body>
 
+  <!-- Animated Gradient Background Overlay -->
+  <div class="gradient-bg"></div>
+
   <!-- Header -->
   <header>
     <div class="container header-container">
@@ -168,37 +171,6 @@
   <!-- Scripts -->
   <script>
     // Smooth scroll for nav
-    document.querySelectorAll('nav a').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
-      });
-    });
+    document.querySelectorAll('
 
-    // Fade-in on scroll
-    const faders = document.querySelectorAll('.fade-in');
-    const appearOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
-    const appearOnScroll = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting){
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, appearOptions);
-    faders.forEach(fader => { appearOnScroll.observe(fader); });
-
-    // Back to Top Button
-    const backToTop = document.getElementById('back-to-top');
-    backToTop.style.display = 'none';
-    window.addEventListener('scroll', () => {
-      backToTop.style.display = window.scrollY > 300 ? 'block' : 'none';
-    });
-    backToTop.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-  </script>
-
-</body>
-</html>
 

@@ -196,4 +196,12 @@ footer { text-align: center; padding: 1rem; border-top: 1px solid #333; color: v
 
 <!-- trigger rebuild -->
 
+/* Disable all glow effects & animations */
+* {
+  animation: none !important;
+  text-shadow: none !important;
+  box-shadow: none !important;
+}
+
+
 

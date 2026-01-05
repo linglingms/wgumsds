@@ -257,6 +257,23 @@ nav a:hover,
   pointer-events: auto;
 }
 
+.project-card {
+  all: unset;
+  display: block;
+  width: 100%;
+  background: #1e1e1e;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 16px;
+  cursor: pointer;
+  color: white;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+}
+
+
 
 
 

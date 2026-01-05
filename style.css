@@ -238,6 +238,25 @@ nav a:hover,
   box-shadow: none !important;
 }
 
+/* FORCE project cards to be clickable */
+.project-card {
+  display: block;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+  z-index: 10;
+}
+
+.project-card * {
+  pointer-events: none;
+}
+
+/* Re-enable click on the card itself */
+.project-card {
+  pointer-events: auto;
+}
+
 
 
 

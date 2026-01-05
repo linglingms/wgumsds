@@ -1,7 +1,4 @@
 <!DOCTYPE html>
-
-<link rel="stylesheet" href="style.css">
-
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -9,6 +6,7 @@
   <title>Warren Buenarte | Portfolio</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
   <div class="gradient-bg"></div>
 
@@ -32,34 +30,55 @@
   </header>
 
   <main class="container">
+
     <!-- Projects -->
     <section id="projects" class="section fade-in">
       <h2>💻 Projects</h2>
+
       <div class="project-grid">
-        <div class="project-card fade-in">
+
+        <a href="https://github.com/linglingms/D600-Task-1"
+           class="project-card fade-in" target="_blank" rel="noopener">
           <h3>D600 Task 1</h3>
           <p>Data analysis using Python & pandas</p>
-        </div>
-        <div class="project-card fade-in">
+          <p>📂 View on GitHub</p>
+        </a>
+
+        <a href="https://github.com/linglingms/D600-Task-3-Principal-Component-Analysis"
+           class="project-card fade-in" target="_blank" rel="noopener">
           <h3>D600 Task 3 PCA</h3>
           <p>Principal Component Analysis project</p>
-        </div>
-        <div class="project-card fade-in">
+          <p>📂 View on GitHub</p>
+        </a>
+
+        <a href="https://github.com/linglingms/D600-Task-2-Logistic-Regression"
+           class="project-card fade-in" target="_blank" rel="noopener">
           <h3>D600 Task 2 Logistic Regression</h3>
           <p>Logistic regression analysis in Python</p>
-        </div>
-        <div class="project-card fade-in">
+          <p>📂 View on GitHub</p>
+        </a>
+
+        <a href="https://github.com/linglingms/D601-Interactive-Dashboard"
+           class="project-card fade-in" target="_blank" rel="noopener">
           <h3>D601 Interactive Dashboard</h3>
           <p>Dashboard creation with Tableau</p>
-        </div>
-        <div class="project-card fade-in">
+          <p>📂 View on GitHub</p>
+        </a>
+
+        <a href="https://github.com/linglingms/D603-Time-Series-Modeling"
+           class="project-card fade-in" target="_blank" rel="noopener">
           <h3>D603 Time Series Modeling</h3>
           <p>Time series modeling with Python</p>
-        </div>
-        <div class="project-card fade-in">
+          <p>📂 View on GitHub</p>
+        </a>
+
+        <a href="https://github.com/linglingms/D606-Data-Science-Capstone-Task-2"
+           class="project-card fade-in" target="_blank" rel="noopener">
           <h3>D606 Capstone Task 2</h3>
           <p>Data science capstone project</p>
-        </div>
+          <p>📂 View on GitHub</p>
+        </a>
+
       </div>
     </section>
 
@@ -83,15 +102,15 @@
     <section id="education" class="section fade-in">
       <h2>🎓 Education</h2>
       <div class="edu-item fade-in">
-        <h3>Western Governors University - MS Data Science, 2025</h3>
+        <h3>Western Governors University – MS Data Science, 2025</h3>
         <p>Relevant Coursework: Optimization, Deployment, Data Management, Machine Learning</p>
       </div>
       <div class="edu-item fade-in">
-        <h3>University of Washington - BS Biology & BA Biochemistry, 2024</h3>
+        <h3>University of Washington – BS Biology & BA Biochemistry, 2024</h3>
         <p>Extracurriculars: HCP, Dub Hacks, DubsTech Datathon</p>
       </div>
       <div class="edu-item fade-in">
-        <h3>Highline College - AA Biology, 2022</h3>
+        <h3>Highline College – AA Biology, 2022</h3>
       </div>
     </section>
 
@@ -99,31 +118,17 @@
     <section id="experience" class="section fade-in">
       <h2>💼 Experience</h2>
       <div class="exp-item fade-in">
-        <h3>Experis at Meta - Data Quality Analyst Intern</h3>
+        <h3>Experis at Meta – Data Quality Analyst Intern</h3>
         <ul>
-          <li>Analyzed data quality and presented reports within XR tech team</li>
+          <li>Analyzed data quality and presented reports within XR tech teams</li>
           <li>Trained and improved Meta AI models</li>
         </ul>
       </div>
       <div class="exp-item fade-in">
-        <h3>UW Medicine - Medical Scribe</h3>
+        <h3>UW Medicine – Medical Scribe</h3>
         <ul>
-          <li>Charted patient encounters in EMR during clinical visits</li>
-          <li>Documented histories, exams, and assessments maintaining HIPAA compliance</li>
-        </ul>
-      </div>
-      <div class="exp-item fade-in">
-        <h3>SEFS Quantitative Ecology Lab - Data Processing Intern</h3>
-        <ul>
-          <li>Classified species using camera imaging & statistical analysis</li>
-          <li>Processed data with neural networking techniques under supervision</li>
-        </ul>
-      </div>
-      <div class="exp-item fade-in">
-        <h3>American College of Cardiology - Research Assistant</h3>
-        <ul>
-          <li>Participated in global cardiology program with seminars & networking</li>
-          <li>Engaged in research discussions on cardiovascular innovations</li>
+          <li>Charted patient encounters in EMR systems</li>
+          <li>Maintained HIPAA-compliant documentation</li>
         </ul>
       </div>
     </section>
@@ -135,95 +140,35 @@
       <p>Phone: 253-202-4706</p>
       <p>LinkedIn: <a href="https://www.linkedin.com/in/warren05" target="_blank">linkedin.com/in/warren05</a></p>
     </section>
+
   </main>
 
-  <!-- Back to top -->
   <button id="back-to-top">⬆️</button>
 
   <!-- JS -->
   <script>
-    // Fade-in on scroll
     const faders = document.querySelectorAll('.fade-in');
-    const appearOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
-    const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+    const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
-        if(!entry.isIntersecting) return;
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
       });
-    }, appearOptions);
-    faders.forEach(fader => appearOnScroll.observe(fader));
+    }, { threshold: 0.1 });
 
-    // Smooth scroll for nav links
-    document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      });
-    });
+    faders.forEach(f => observer.observe(f));
 
-    // Back to top button
     const backToTop = document.getElementById('back-to-top');
     window.addEventListener('scroll', () => {
-      backToTop.style.display = (window.scrollY > 300) ? 'block' : 'none';
+      backToTop.style.display = window.scrollY > 300 ? 'block' : 'none';
     });
-    backToTop.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
+    backToTop.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
   </script>
+
 </body>
 </html>
 
-<section id="projects" class="section fade-in">
-  <h2>💻 Projects</h2>
-
-  <div class="project-grid">
-
-    <a href="https://github.com/linglingms/D600-Task-1"
-       class="project-card fade-in" target="_blank" rel="noopener">
-      <h3>D600 Task 1</h3>
-      <p>Data analysis using Python & pandas</p>
-      <p>📂 View on GitHub</p>
-    </a>
-
-    <a href="https://github.com/linglingms/D600-Task-3-Principal-Component-Analysis"
-       class="project-card fade-in" target="_blank" rel="noopener">
-      <h3>D600 Task 3 PCA</h3>
-      <p>Principal Component Analysis project</p>
-      <p>📂 View on GitHub</p>
-    </a>
-
-    <a href="https://github.com/linglingms/D600-Task-2-Logistic-Regression"
-       class="project-card fade-in" target="_blank" rel="noopener">
-      <h3>D600 Task 2 Logistic Regression</h3>
-      <p>Logistic regression analysis in Python</p>
-      <p>📂 View on GitHub</p>
-    </a>
-
-    <a href="https://github.com/linglingms/D601-Interactive-Dashboard"
-       class="project-card fade-in" target="_blank" rel="noopener">
-      <h3>D601 Interactive Dashboard</h3>
-      <p>Dashboard creation with Tableau</p>
-      <p>📂 View on GitHub</p>
-    </a>
-
-    <a href="https://github.com/linglingms/D603-Time-Series-Modeling"
-       class="project-card fade-in" target="_blank" rel="noopener">
-      <h3>D603 Time Series Modeling</h3>
-      <p>Time series modeling with Python</p>
-      <p>📂 View on GitHub</p>
-    </a>
-
-    <a href="https://github.com/linglingms/D606-Data-Science-Capstone-Task-2"
-       class="project-card fade-in" target="_blank" rel="noopener">
-      <h3>D606 Capstone Task 2</h3>
-      <p>Data science capstone project</p>
-      <p>📂 View on GitHub</p>
-    </a>
-
-  </div>
-</section>
 
 
 

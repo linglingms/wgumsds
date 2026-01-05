@@ -203,5 +203,41 @@ footer { text-align: center; padding: 1rem; border-top: 1px solid #333; color: v
   box-shadow: none !important;
 }
 
+/* ================================
+   GLOBAL GLOW & ANIMATION DISABLER
+   ================================ */
+
+/* Remove all glow, neon, pulse, and shadow effects */
+* {
+  text-shadow: none !important;
+  box-shadow: none !important;
+  animation: none !important;
+}
+
+/* Keep hover motion but no glow */
+.profile-pic:hover,
+.skill:hover,
+.project-card:hover,
+#back-to-top:hover {
+  box-shadow: none !important;
+}
+
+/* Disable animated gradient movement (static background) */
+.gradient-bg {
+  animation: none !important;
+}
+
+/* Clean hover styles */
+nav a:hover,
+#contact a:hover {
+  text-shadow: none !important;
+}
+
+/* Back to top button clean */
+#back-to-top {
+  box-shadow: none !important;
+}
+
+
 
 

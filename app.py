@@ -10,13 +10,34 @@ st.markdown("An interactive dashboard presenting key insights from the Access to
 # Load data
 @st.cache_data
 
-def load_data(path="Access_to_Care_Dataset.csv"):
-    return pd.read_csv(path)
+def load_data(path=None):
+    # allow an environment variable or explicit path
+    if path is None:
+        path = st.secrets.get("DATA_PATH") if "DATA_PATH" in st.secrets else None
+    if path is None:
+        # default to local filename
+        path = "Access_to_Care_Dataset.csv"
+    # try absolute fallback locations
+    try:
+        return pd.read_csv(path)
+    except FileNotFoundError:
+        # try looking in parent directory or OneDrive path if provided
+        alt = r"C:\Users\warre\OneDrive\Access_to_Care_Dataset.csv"
+        if path != alt:
+            try:
+                return pd.read_csv(alt)
+            except FileNotFoundError:
+                pass
+        raise
 
+# attempt loading
 try:
     data = load_data()
 except FileNotFoundError:
-    st.error("Dataset file not found. Please place 'Access_to_Care_Dataset.csv' in the same folder as this app.")
+    st.error(
+        "Dataset file not found. Either place 'Access_to_Care_Dataset.csv' in the app folder,\n" \
+        "set DATA_PATH in Streamlit secrets, or ensure the file exists at C:\\Users\\warre\\OneDrive\\Access_to_Care_Dataset.csv."
+    )
     st.stop()
 
 # Data overview

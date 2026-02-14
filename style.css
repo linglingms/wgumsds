@@ -13,6 +13,15 @@
   --card-shadow: rgba(0, 0, 0, 0.2);
 }
 
+.profile-pic {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;          /* keeps the aspect ratio */
+  object-position: center 40%; /* vertical shift to show face */
+  border: 2px solid var(--accent);
+}
+
 /* Global styles */
 body {
   margin: 0;

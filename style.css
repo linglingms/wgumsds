@@ -258,6 +258,18 @@ footer {
   h2 { font-size: 1.6rem; }
 }
 
+footer {
+  text-align: center;
+  padding: 1.5rem 2rem;
+  border-top: 1px solid #000;
+  color: var(--muted);
+  font-size: 0.95rem;
+  background: var(--section-bg);
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
 
 
 

@@ -3,23 +3,14 @@
 
 /* Root colors */
 :root {
-  --bg: #e0e0e5; /* light gray base for gradient */
+  --bg: #e0e0e5;           /* light gray base for gradient */
   --gradient-start: #d1d1e0; /* gray */
-  --gradient-end: #a88fcf; /* faded purple */
-  --section-bg: #1b3b2f; /* dark green boxes */
-  --fg: #000000; /* black text inside boxes */
-  --accent: #8fc1a9; /* green accent for headings */
-  --muted: #c0c0c0; /* light muted text if needed */
+  --gradient-end: #a88fcf;   /* faded purple */
+  --section-bg: #1b3b2f;     /* dark green boxes */
+  --fg: #e0e0e0;             /* light gray text inside boxes */
+  --accent: #8fc1a9;         /* green accent for headings */
+  --muted: #c0c0c0;          /* lighter muted text */
   --card-shadow: rgba(0, 0, 0, 0.2);
-}
-
-.profile-pic {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  object-fit: cover;          /* keeps the aspect ratio */
-  object-position: center 40%; /* vertical shift to show face */
-  border: 2px solid var(--accent);
 }
 
 /* Global styles */
@@ -61,6 +52,7 @@ header {
   height: 150px;
   border-radius: 50%;
   object-fit: cover;
+  object-position: center 40%;
   border: 2px solid var(--accent);
   margin-bottom: 0.5rem;
 }
@@ -243,28 +235,8 @@ footer {
 /* Fade-in animation */
 .fade-in {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-}
+  tr
 
-.fade-in.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Responsive */
-@media (max-width: 1024px) {
-  .container { padding: 2rem 1.5rem; }
-  .header-container { flex-direction: column; gap: 1.5rem; }
-  .profile-pic { width: 130px; height: 130px; }
-}
-
-@media (max-width: 768px) {
-  .skills-grid { grid-template-columns: repeat(auto-fit, minmax(140px,1fr)); }
-  .project-grid { grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); }
-  .header-text h1 { font-size: 2.4rem; }
-  h2 { font-size: 1.6rem; }
-}
 
 
 

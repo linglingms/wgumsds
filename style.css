@@ -208,6 +208,7 @@ h2 {
   background: #164731;
   padding: 1.5rem;
   border-radius: 12px;
+  margin-bottom: 2rem;
 }
 
 .undergrad-school h3 {
@@ -218,29 +219,15 @@ h2 {
   padding-bottom: 0.5rem;
 }
 
-.quarter-group {
-  margin-bottom: 1.5rem;
-}
-
-.quarter-group h4 {
-  color: var(--muted);
-  margin: 0 0 0.8rem 0;
-  font-size: 1rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.course-list {
+.course-list-combined {
   display: grid;
-  gap: 0.6rem;
-  margin-left: 1rem;
+  gap: 0.7rem;
 }
 
 .course-entry {
   color: var(--fg);
   font-size: 0.95rem;
-  padding: 0.5rem 0.8rem;
+  padding: 0.7rem 0.8rem;
   background: rgba(0, 0, 0, 0.2);
   border-left: 3px solid var(--accent);
   border-radius: 4px;

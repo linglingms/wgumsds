@@ -10,6 +10,9 @@ Each folder corresponds to a different course or task.
 - **D598 Analytics Programming**  
   Python-based programming assignments focusing on analytics and data manipulation.
 
+- **D601 Data Storytelling for Various Audiences**
+  Dashboard using Tablaeu to storytell data for non-technical audiences.
+
 - **D600 Statistical Data Mining**  
   Projects involving statistical models and data mining techniques.
 

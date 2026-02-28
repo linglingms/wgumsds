@@ -203,6 +203,49 @@ h2 {
   font-size: 0.95rem;
 }
 
+/* Undergraduate Courses */
+.undergrad-school {
+  background: #164731;
+  padding: 1.5rem;
+  border-radius: 12px;
+}
+
+.undergrad-school h3 {
+  color: var(--accent);
+  margin: 0 0 1.5rem 0;
+  font-size: 1.3rem;
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 0.5rem;
+}
+
+.quarter-group {
+  margin-bottom: 1.5rem;
+}
+
+.quarter-group h4 {
+  color: var(--muted);
+  margin: 0 0 0.8rem 0;
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.course-list {
+  display: grid;
+  gap: 0.6rem;
+  margin-left: 1rem;
+}
+
+.course-entry {
+  color: var(--fg);
+  font-size: 0.95rem;
+  padding: 0.5rem 0.8rem;
+  background: rgba(0, 0, 0, 0.2);
+  border-left: 3px solid var(--accent);
+  border-radius: 4px;
+}
+
 /* Projects */
 .project-grid {
   display: grid;

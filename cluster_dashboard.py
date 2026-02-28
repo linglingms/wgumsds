@@ -224,16 +224,27 @@ with tab_analysis:
         pca = PCA(n_components=2)
         emb = pca.fit_transform(X_for_model)
         
+        # Create DataFrame for plotly
+        pca_df = pd.DataFrame({
+            'PC1': emb[:, 0],
+            'PC2': emb[:, 1],
+            'cluster': data_results['cluster'].values
+        })
+        
         fig = px.scatter(
-            x=emb[:,0], y=emb[:,1], color=data_results['cluster'],
-            labels={'x':f'PC1 ({pca.explained_variance_ratio_[0]:.1%})','y':f'PC2 ({pca.explained_variance_ratio_[1]:.1%})','color':'Cluster'},
-            title=f'Patient Clusters (k={n_clusters}) - PCA Projection',
-            hover_data={'cluster': True}
+            pca_df, x='PC1', y='PC2', color='cluster',
+            labels={'PC1':f'PC1 ({pca.explained_variance_ratio_[0]:.1%})','PC2':f'PC2 ({pca.explained_variance_ratio_[1]:.1%})','color':'Cluster'},
+            title=f'Patient Clusters (k={n_clusters}) - PCA Projection'
         )
         
         if centers is not None:
             cent_pca = pca.transform(centers)
-            fig.add_scatter(x=cent_pca[:,0], y=cent_pca[:,1], mode='markers', 
+            cent_df = pd.DataFrame({
+                'PC1': cent_pca[:, 0],
+                'PC2': cent_pca[:, 1],
+                'type': 'Centroid'
+            })
+            fig.add_scatter(x=cent_df['PC1'], y=cent_df['PC2'], mode='markers', 
                            marker=dict(symbol='x', size=15, color='black', line=dict(width=2)), 
                            name='Centroids', showlegend=True)
         

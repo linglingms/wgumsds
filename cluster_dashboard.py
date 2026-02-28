@@ -15,17 +15,33 @@ st.title("Interactive Clustering Dashboard (D603 Task 2)")
 # Try loading cleaned CSV first, fall back to original Excel if needed
 @st.cache_data
 def load_data():
-    try:
-        df = pd.read_csv('d603task2_cleaned_data.csv')
-        source = 'd603task2_cleaned_data.csv'
-    except Exception:
+    import os
+    
+    files_to_try = [
+        'd603task2_cleaned_data.csv',
+        'medical_clean_d603.xlsx',
+        'medical_cleand603task2.csv',
+    ]
+    
+    for fname in files_to_try:
         try:
-            df = pd.read_excel('medical_clean_d603.xlsx')
-            source = 'medical_clean_d603.xlsx'
-        except Exception:
-            st.error('Could not find data files: d603task2_cleaned_data.csv or medical_clean_d603.xlsx')
-            return None, None
-    return df, source
+            if fname.endswith('.xlsx'):
+                df = pd.read_excel(fname)
+            else:
+                df = pd.read_csv(fname)
+            
+            if df is not None and len(df) > 0:
+                st.info(f"✓ Loaded from: {fname}")
+                return df, fname
+        except Exception as e:
+            st.write(f"(Could not load {fname}: {type(e).__name__})")
+            continue
+    
+    # If all files fail, show error with debugging info
+    st.error('⚠️ Could not load any data files')
+    st.write(f"Current directory: {os.getcwd()}")
+    st.write(f"Files in directory: {os.listdir('.')[:20]}")
+    return None, None
 
 
 data, source = load_data()

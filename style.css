@@ -32,7 +32,9 @@ body {
 header {
   position: sticky;
   top: 0;
-  background: var(--section-bg);
+  background: linear-gradient(135deg, rgba(27, 59, 47, 0.85), rgba(27, 59, 47, 0.85)), url('./bioinfo-background.webp');
+  background-size: cover;
+  background-position: center;
   z-index: 1000;
   border-bottom: 1px solid #000;
   padding: 1rem 2rem;

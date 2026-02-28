@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects | Warren Buenarte</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="gradient-bg"></div>
+
+  <!-- Header -->
+  <header>
+    <div class="header-container container">
+      <img src="IMG_1347.jpeg" alt="Warren Buenarte" class="profile-pic">
+
+      <div class="header-text">
+        <h1>Warren Buenarte</h1>
+        <p class="tagline">Data Scientist | Biotechology, Machine Learning & AI Enthusiast | University of Washington</p>
+        <nav>
+          <a href="index.html">About</a>
+          <a href="projects.html">Projects</a>
+          <a href="skills.html">Skills</a>
+          <a href="education.html">Education</a>
+          <a href="experience.html">Experience</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+        <a href="resume.pdf" target="_blank" class="resume-btn">📄 Resume</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- Projects Section -->
+    <section id="projects" class="section fade-in">
+      <h2>💻 Projects</h2>
+      <div class="project-grid">
+        <a href="https://github.com/linglingms/D600-Task-1" 
+           class="project-card fade-in" target="_blank">
+          <h3>D600 Task 1</h3>
+          <p>Data analysis using Python & pandas</p>
+          <p>📂 View on GitHub</p>
+        </a>
+
+        <a href="https://github.com/linglingms/D600-Task-3-Principal-Component-Analysis" 
+           class="project-card fade-in" target="_blank">
+          <h3>D600 Task 3 PCA</h3>
+          <p>Principal Component Analysis project</p>
+          <p>📂 View on GitHub</p>
+        </a>
+
+        <a href="https://github.com/linglingms/D600-Task-2-Logistic-Regression" 
+           class="project-card fade-in" target="_blank">
+          <h3>D600 Task 2 Logistic Regression</h3>
+          <p>Logistic regression analysis in Python</p>
+          <p>📂 View on GitHub</p>
+        </a>
+
+        <a href="https://wgumsds-clusteringtechniques.streamlit.app/?embed_options=light_theme,show_toolbar,show_colored_line,dark_theme,show_footer,show_padding" 
+           class="project-card fade-in" target="_blank">
+          <h3>D603 Clustering Techniquesd</h3>
+          <p>Clustering using k-means in SteamLit</p>
+          <p>📂 View on SteamLit</p>
+        </a>
+
+        <a href="https://github.com/linglingms/D603-Time-Series-Modeling" 
+           class="project-card fade-in" target="_blank">
+          <h3>D603 Time Series Modeling</h3>
+          <p>Time series modeling with Python</p>
+          <p>📂 View on GitHub</p>
+        </a>
+
+        <a href="https://github.com/linglingms/wgumsds/blob/main/D606%20Data%20Science%20Capstone%20Task%202.ipynb" 
+           class="project-card fade-in" target="_blank">
+          <h3>D606 Capstone Task 2</h3>
+          <p>Data science capstone project</p>
+          <p>📂 View on GitHub</p>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Back to Top -->
+  <button id="back-to-top">⬆️</button>
+
+  <!-- JS -->
+  <script>
+    const faders = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    faders.forEach(f => observer.observe(f));
+
+    const backToTop = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+      backToTop.style.display = window.scrollY > 300 ? 'block' : 'none';
+    });
+    backToTop.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+  </script>
+</body>
+</html>
+
+<footer>
+  <p>© 2026 Warren Buenarte. All rights reserved.</p>
+</footer>

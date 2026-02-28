@@ -31,21 +31,18 @@ def load_data():
                 df = pd.read_csv(fname)
             
             if df is not None and len(df) > 0:
-                st.info(f"✓ Loaded from: {fname}")
                 return df, fname
-        except Exception as e:
-            st.write(f"(Could not load {fname}: {type(e).__name__})")
+        except Exception:
             continue
     
-    # If all files fail, show error with debugging info
-    st.error('⚠️ Could not load any data files')
-    st.write(f"Current directory: {os.getcwd()}")
-    st.write(f"Files in directory: {os.listdir('.')[:20]}")
     return None, None
 
 
 data, source = load_data()
+
 if data is None:
+    st.error('⚠️ Could not load any data files')
+    st.info('Tried to load: d603task2_cleaned_data.csv, medical_clean_d603.xlsx, medical_cleand603task2.csv')
     st.stop()
 
 st.markdown(f"**Loaded data:** {source} — shape {data.shape}")

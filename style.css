@@ -169,6 +169,40 @@ h2 {
   padding-left: 1.8rem;
 }
 
+/* WGU Courses */
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.course-item {
+  background: #164731;
+  padding: 1.5rem;
+  border-radius: 12px;
+  text-align: center;
+  color: var(--fg);
+  box-shadow: 0 2px 6px var(--card-shadow);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.course-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px var(--card-shadow);
+}
+
+.course-item h4 {
+  color: var(--accent);
+  margin: 0 0 0.5rem 0;
+  font-size: 1rem;
+}
+
+.course-item p {
+  color: var(--muted);
+  margin: 0;
+  font-size: 0.95rem;
+}
+
 /* Projects */
 .project-grid {
   display: grid;

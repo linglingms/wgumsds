@@ -1,93 +1,44 @@
-# Clustering Dashboard (D603 Task 2)
+# D599 Task 3 - Market Basket Analysis (Streamlit App)
 
-Interactive Streamlit dashboard for exploring K-Means and Agglomerative clustering techniques on medical data.
+This project converts your notebook workflow into a deployable Streamlit app.
 
-## Files
+## App File
 
-- `cluster_dashboard.py` — the Streamlit dashboard app
-- `requirements.txt` — Python dependencies
-- `README.md` — this file
+- `app.py`
 
-## Local Usage
+## What the App Does
+
+- Loads `Megastore_Dataset_Task_3 3.xlsx` or `Megastore_Dataset_Task_3 3.csv` (or an uploaded file)
+- Applies the same preprocessing from the notebook:
+  - normalizes column names
+  - ordinal encoding for `orderpriority` and `customerordersatisfaction`
+  - one-hot encoding for `paymentmethod`
+- Builds transaction baskets from `orderid` and `productname`
+- Runs Apriori + association rules
+- Shows top rules by lift and lets you download outputs
+
+## Local Run
 
 1. Install dependencies:
+
 ```bash
 pip install -r requirements.txt
 ```
 
-2. Run the dashboard:
+2. Start the app:
+
 ```bash
-streamlit run cluster_dashboard.py
+streamlit run app.py
 ```
 
-The app will open at `http://localhost:8501`.
+## Streamlit Community Cloud Deployment
 
-## Features
-
-- Load data from CSV or Excel
-- Multi-feature selection for clustering
-- Choose between KMeans and Agglomerative clustering
-- Adjust number of clusters with slider
-- View elbow curve and silhouette scores
-- Interactive PCA visualization (2D scatter plot)
-- Download labeled data as CSV
-
-## Deploy to Streamlit Community Cloud
-
-1. **Create a GitHub repository:**
-   - Go to https://github.com/new
-   - Repository name: `clustering-dashboard`
-   - Public repo
-   - Create
-
-2. **Push code to GitHub:**
-   ```powershell
-   git remote add origin https://github.com/YOUR_USERNAME/clustering-dashboard.git
-   git branch -M main
-   git push -u origin main
-   ```
-
-3. **Deploy on Streamlit Cloud:**
-   - Go to https://share.streamlit.io
-   - Click "Create app"
-   - Select your GitHub repo, branch (`main`), and file (`cluster_dashboard.py`)
-   - Deploy
-
-**Note:** Add the data file (`d603task2_cleaned_data.csv`) to the repo or configure it to load from a public URL.
+1. Push this folder to a GitHub repository.
+2. Go to Streamlit Community Cloud and create a new app.
+3. Select your repository and set the main file path to `app.py`.
+4. Deploy.
 
 ## Notes
 
-- The app detects if data is already scaled (mean≈0, std≈1) and skips scaling by default
-- Cluster centers are displayed in original data units (when applicable)
-- Supports various numeric column selections for flexible analysis
-# Access to Care Dashboard
-
-This repository contains a Streamlit application that visualizes the `Access_to_Care_Dataset.csv` file. The dashboard provides an interactive way to explore the data with filters, charts, and summary statistics.
-
-## Getting Started
-
-1. **Install dependencies**
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-2. **Place the dataset**
-   Ensure `Access_to_Care_Dataset.csv` is in the same directory as `app.py`.
-
-3. **Run the app locally**
-   ```bash
-   streamlit run app.py
-   ```
-
-4. **Deploying**
-   - You can deploy the app on [Streamlit Cloud](https://streamlit.io/cloud) by linking this repository.
-   - Alternatively, use platforms like Heroku, AWS, or Docker with a `Procfile` or `Dockerfile`.
-
-## Features
-
-- Filter data by `TOPIC`, `SUBGROUP`, and `CLASSIFICATION` using sidebar controls.
-- Interactive box plots, time-series trends, heatmaps, and summary statistics.
-
----
-
-*Created automatically by GitHub Copilot.*
+- If default local files are not present in deployment, upload your dataset using the app sidebar uploader.
+- Outputs can be downloaded directly from the app as CSV files.

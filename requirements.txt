@@ -1,9 +1,4 @@
 streamlit
 pandas
-scikit-learn
-plotly
+mlxtend
 openpyxl
-streamlit
-pandas
-numpy
-plotly

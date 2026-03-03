@@ -1,0 +1,13 @@
+/T_ONTIME_REPORTING.xlsx
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Streamlit local secrets
+.streamlit/secrets.toml
+
+# Virtual environments
+.venv/
+venv/
+env/

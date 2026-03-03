@@ -10,6 +10,7 @@ import seaborn as sns
 import streamlit as st
 from sklearn.metrics import confusion_matrix
 from sklearn.model_selection import train_test_split
+from sklearn.neural_network import MLPClassifier
 from sklearn.preprocessing import LabelEncoder
 
 try:
@@ -139,7 +140,83 @@ def render_training(images, labels):
     st.subheader("Train, Validate, and Evaluate CNN")
 
     if not TF_AVAILABLE:
-        st.error("TensorFlow is required to train the model. Install it and rerun the app.")
+        st.info("TensorFlow is unavailable in this environment. Using scikit-learn fallback model for training.")
+
+        with st.sidebar:
+            st.markdown("### Fallback Training Controls")
+            test_size = st.slider("Test split (%)", 10, 30, 15, key="fb_test")
+            val_size = st.slider("Validation split from remaining (%)", 10, 30, 15, key="fb_val")
+            max_iter = st.slider("Max iterations", 50, 300, 100, key="fb_iter")
+
+        images_norm = images.astype("float32") / 255.0
+        X_flat = images_norm.reshape(images_norm.shape[0], -1)
+
+        X_train, X_temp, y_train_raw, y_temp_raw = train_test_split(
+            X_flat,
+            labels,
+            test_size=(test_size + val_size) / 100,
+            random_state=42,
+            stratify=labels,
+        )
+
+        adjusted_val = val_size / (test_size + val_size)
+        X_val, X_test, y_val_raw, y_test_raw = train_test_split(
+            X_temp,
+            y_temp_raw,
+            test_size=1 - adjusted_val,
+            random_state=42,
+            stratify=y_temp_raw,
+        )
+
+        label_encoder = LabelEncoder()
+        y_train = label_encoder.fit_transform(y_train_raw)
+        y_val = label_encoder.transform(y_val_raw)
+        y_test = label_encoder.transform(y_test_raw)
+
+        st.write(
+            {
+                "Train Shape": X_train.shape,
+                "Validation Shape": X_val.shape,
+                "Test Shape": X_test.shape,
+                "Classes": list(label_encoder.classes_),
+            }
+        )
+
+        if st.button("Train Fallback Model", type="primary"):
+            model = MLPClassifier(hidden_layer_sizes=(128,), max_iter=max_iter, random_state=42)
+            with st.spinner("Training fallback model..."):
+                model.fit(X_train, y_train)
+
+            train_acc = model.score(X_train, y_train)
+            val_acc = model.score(X_val, y_val)
+            test_acc = model.score(X_test, y_test)
+
+            st.success("Fallback training complete.")
+            st.write(
+                {
+                    "Training Accuracy": round(float(train_acc), 4),
+                    "Validation Accuracy": round(float(val_acc), 4),
+                    "Test Accuracy": round(float(test_acc), 4),
+                }
+            )
+
+            y_pred = model.predict(X_test)
+            cm = confusion_matrix(y_test, y_pred)
+            fig_cm, ax_cm = plt.subplots(figsize=(10, 6))
+            sns.heatmap(
+                cm,
+                annot=True,
+                fmt="d",
+                cmap="Blues",
+                xticklabels=label_encoder.classes_,
+                yticklabels=label_encoder.classes_,
+                ax=ax_cm,
+            )
+            ax_cm.set_xlabel("Predicted Labels")
+            ax_cm.set_ylabel("True Labels")
+            ax_cm.set_title("Confusion Matrix (Fallback Model)")
+            st.pyplot(fig_cm)
+
         return
 
     with st.sidebar:

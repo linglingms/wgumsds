@@ -54,3 +54,18 @@ Custom Office Templates/
 # Keep repository focused on project files
 tf310_env/
 tensorflow_env/
+
+# Ignore broad analytics artifacts in Documents-root repo
+*.ipynb
+*.csv
+*.xlsx
+*.twb
+*.twbx
+
+# Keep app/deployment sources tracked
+!app.py
+!requirements.txt
+!README.md
+!Procfile
+!Dockerfile
+!.streamlit/config.toml

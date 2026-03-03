@@ -117,7 +117,33 @@ def render_overview(images, labels):
 def render_augmentation(images):
     st.subheader("Data Augmentation Preview")
     if not TF_AVAILABLE:
-        st.warning("TensorFlow is not installed, so augmentation preview is unavailable.")
+        sample = images[0]
+        h, w = sample.shape[:2]
+
+        flip_h = np.fliplr(sample)
+        rot_90 = np.rot90(sample)
+        brighten = np.clip(sample.astype(np.float32) * 1.2, 0, 255).astype(np.uint8)
+
+        crop_h = int(h * 0.8)
+        crop_w = int(w * 0.8)
+        top = (h - crop_h) // 2
+        left = (w - crop_w) // 2
+        crop = sample[top : top + crop_h, left : left + crop_w]
+        zoom_in = np.zeros_like(sample)
+        y_idx = np.linspace(0, crop_h - 1, h).astype(int)
+        x_idx = np.linspace(0, crop_w - 1, w).astype(int)
+        zoom_in = crop[np.ix_(y_idx, x_idx)]
+
+        fallback_images = [sample, flip_h, rot_90, brighten, zoom_in]
+        fallback_titles = ["Original", "Flip Horizontal", "Rotate 90°", "Brighten", "Zoom In"]
+
+        fig, axes = plt.subplots(1, 5, figsize=(15, 3))
+        for i in range(5):
+            axes[i].imshow(fallback_images[i])
+            axes[i].set_title(fallback_titles[i], fontsize=9)
+            axes[i].axis("off")
+        st.pyplot(fig)
+        st.caption("Using built-in augmentation preview fallback (TensorFlow not required).")
         return
 
     datagen = ImageDataGenerator(

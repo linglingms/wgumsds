@@ -1,6 +1,13 @@
-# D604 Task 1 - Neural Networks Streamlit App
+# D604 Streamlit Apps (Task 1 and Task 2)
 
-## What this app does
+## Separate apps
+
+Task 1 and Task 2 are separate Streamlit apps with separate entrypoints:
+
+- Task 1 main file: `D604/task1_app.py`
+- Task 2 main file: `D604/task2_app.py`
+
+## Task 1 app (Neural Networks)
 
 This app is an interactive version of the notebook for D604 Task 1. It includes:
 
@@ -13,8 +20,10 @@ This app is an interactive version of the notebook for D604 Task 1. It includes:
 
 ## Files
 
-- Task 1 app: `streamlit_app.py`
-- Task 2 app: `streamlit_app_task2.py`
+- Task 1 app logic: `streamlit_app.py`
+- Task 1 app entrypoint: `task1_app.py`
+- Task 2 app logic: `streamlit_app_task2.py`
+- Task 2 app entrypoint: `task2_app.py`
 - Documentation source: `D604 Task 1 Neural Networks.docx`
 - Documentation source: `D604 Task 2 Sentiment Analysis Using Neural Networks.docx`
 
@@ -48,16 +57,16 @@ pip install -r D604/requirements.txt
 
 ## Run
 
-From the workspace root:
+From the workspace root (Task 1):
 
 ```bash
-streamlit run D604/streamlit_app.py
+streamlit run D604/task1_app.py
 ```
 
-For Task 2 sentiment analysis app:
+Task 2 sentiment analysis app:
 
 ```bash
-streamlit run D604/streamlit_app_task2.py
+streamlit run D604/task2_app.py
 ```
 
 ## Data input options in app

@@ -107,19 +107,44 @@ def render_documentation(doc_path: str):
     qa_items = []
     current_question = None
     current_answer_lines = []
+    current_inline_answer = ""
+
+    def parse_question_line(line_text: str):
+        prefix_match = re.match(r"^([A-Z]\.\s+|\d+\.\s+)(.*)$", line_text)
+        content = prefix_match.group(2).strip() if prefix_match else line_text.strip()
+        q_text = line_text
+        inline_answer = ""
+
+        if "?" in content:
+            left, right = content.split("?", 1)
+            q_text = f"{left.strip()}?"
+            inline_answer = right.strip()
+        else:
+            split_sentences = re.split(r"(?<=[.!?])\s+", content, maxsplit=1)
+            if len(split_sentences) == 2 and split_sentences[1].strip():
+                q_text = split_sentences[0].strip()
+                inline_answer = split_sentences[1].strip()
+            else:
+                q_text = content
+
+        return q_text, inline_answer
 
     def flush_question():
-        nonlocal current_question, current_answer_lines
+        nonlocal current_question, current_answer_lines, current_inline_answer
         if current_question:
+            answer_text = "\n".join(current_answer_lines).strip()
+            if not answer_text:
+                answer_text = current_inline_answer.strip()
             qa_items.append(
                 {
                     "section": current_section,
                     "question": current_question,
-                    "answer": "\n".join(current_answer_lines).strip(),
+                    "answer": answer_text,
                 }
             )
         current_question = None
         current_answer_lines = []
+        current_inline_answer = ""
 
     for line in lines:
         if section_pattern.match(line):
@@ -130,7 +155,7 @@ def render_documentation(doc_path: str):
         is_question = bool(question_pattern.match(line)) or line.endswith("?")
         if is_question:
             flush_question()
-            current_question = line
+            current_question, current_inline_answer = parse_question_line(line)
         else:
             if current_question:
                 current_answer_lines.append(line)
@@ -449,14 +474,27 @@ def main():
     images = None
     labels = None
 
+    if "task1_images" not in st.session_state:
+        st.session_state["task1_images"] = None
+    if "task1_labels" not in st.session_state:
+        st.session_state["task1_labels"] = None
+
     try:
         if source == "Upload files" and uploaded_images is not None and uploaded_labels is not None:
             images, labels, _ = load_dataset(uploaded_images.read(), uploaded_labels.read())
+            st.session_state["task1_images"] = images
+            st.session_state["task1_labels"] = labels
         elif source == "Use local files" and Path(local_images).exists() and Path(local_labels).exists():
             with open(local_images, "rb") as f_img, open(local_labels, "rb") as f_lbl:
                 images, labels, _ = load_dataset(f_img.read(), f_lbl.read())
+            st.session_state["task1_images"] = images
+            st.session_state["task1_labels"] = labels
     except Exception as ex:
         st.error(f"Could not load dataset: {ex}")
+
+    if (images is None or labels is None) and st.session_state.get("task1_images") is not None and st.session_state.get("task1_labels") is not None:
+        images = st.session_state["task1_images"]
+        labels = st.session_state["task1_labels"]
 
     if images is None or labels is None:
         if source == "Use local files":
@@ -474,7 +512,10 @@ def main():
 
         if st.button("Use Demo Data", type="secondary"):
             images, labels = create_demo_dataset()
+            st.session_state["task1_images"] = images
+            st.session_state["task1_labels"] = labels
             st.success("Loaded demo dataset so you can use the app immediately.")
+            st.rerun()
 
     with tab_data:
         if images is None or labels is None:

@@ -22,8 +22,10 @@ try:
     from tensorflow.keras.utils import to_categorical
 
     TF_AVAILABLE = True
-except Exception:
+    TF_IMPORT_ERROR = None
+except Exception as ex:
     TF_AVAILABLE = False
+    TF_IMPORT_ERROR = str(ex)
 
 
 st.set_page_config(page_title="D604 Task 1 - Neural Networks App", layout="wide")
@@ -140,7 +142,9 @@ def render_training(images, labels):
     st.subheader("Train, Validate, and Evaluate CNN")
 
     if not TF_AVAILABLE:
-        st.info("TensorFlow is unavailable in this environment. Using scikit-learn fallback model for training.")
+        st.info("Running fallback training mode (scikit-learn) for this environment.")
+        with st.expander("TensorFlow details (optional)"):
+            st.caption(f"TensorFlow import not available: {TF_IMPORT_ERROR}")
 
         with st.sidebar:
             st.markdown("### Fallback Training Controls")

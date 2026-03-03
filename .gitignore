@@ -11,3 +11,46 @@ __pycache__/
 .venv/
 venv/
 env/
+
+# Notebook & Python tooling noise
+.ipynb_checkpoints/
+.pytest_cache/
+.mypy_cache/
+
+# Common personal/binary files in Documents-root repos
+*.zip
+*.exe
+*.msi
+*.pkg
+*.lnk
+*.ics
+*.jpg
+*.jpeg
+*.png
+*.webp
+*.pdf
+*.doc
+*.docx
+*.ppt
+*.pptx
+
+# Large data/model artifacts
+*.npy
+*.h5
+*.pkl
+mlruns/
+
+# Common personal folders
+Desktop/
+Pictures/
+Videos/
+Music/
+Saved Pictures/
+My Tableau Repository/
+Miscellaneous/
+Shared with Everyone/
+Custom Office Templates/
+
+# Keep repository focused on project files
+tf310_env/
+tensorflow_env/

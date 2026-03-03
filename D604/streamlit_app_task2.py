@@ -2,6 +2,7 @@ from pathlib import Path
 import io
 import re
 import zipfile
+from typing import Any
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -11,14 +12,25 @@ from sklearn.model_selection import train_test_split
 
 try:
     import tensorflow as tf
-    from tensorflow.keras.callbacks import EarlyStopping
-    from tensorflow.keras.layers import Dense, Embedding, LSTM
-    from tensorflow.keras.models import Sequential
-    from tensorflow.keras.preprocessing.sequence import pad_sequences
-    from tensorflow.keras.preprocessing.text import Tokenizer
+
+    EarlyStopping = tf.keras.callbacks.EarlyStopping
+    Dense = tf.keras.layers.Dense
+    Embedding = tf.keras.layers.Embedding
+    LSTM = tf.keras.layers.LSTM
+    Sequential = tf.keras.models.Sequential
+    pad_sequences = tf.keras.preprocessing.sequence.pad_sequences
+    Tokenizer = tf.keras.preprocessing.text.Tokenizer
 
     TF_AVAILABLE = True
 except Exception:
+    tf = None
+    EarlyStopping = None
+    Dense = None
+    Embedding = None
+    LSTM = None
+    Sequential = None
+    pad_sequences = None
+    Tokenizer = None
     TF_AVAILABLE = False
 
 
@@ -63,7 +75,7 @@ def clean_text(text: str) -> str:
     return re.sub(r"[^\w\s]", "", str(text).lower()).strip()
 
 
-def build_lstm_model(vocab_size: int, max_seq_len: int, embedding_dim: int = 100) -> Sequential:
+def build_lstm_model(vocab_size: int, max_seq_len: int, embedding_dim: int = 100) -> Any:
     model = Sequential(
         [
             Embedding(input_dim=vocab_size, output_dim=embedding_dim, input_length=max_seq_len),
@@ -105,6 +117,9 @@ def render_eda(df: pd.DataFrame):
 
 
 def prepare_data(df: pd.DataFrame, max_vocab_size: int, max_seq_limit: int):
+    if not TF_AVAILABLE:
+        raise RuntimeError("TensorFlow is required for tokenization and sequence padding.")
+
     work_df = df.copy()
     work_df["review"] = work_df["review"].astype(str)
     work_df["clean_review"] = work_df["review"].apply(clean_text)
@@ -280,7 +295,7 @@ def main():
 
     tab_data, tab_model, tab_docs = st.tabs(["Data & Prep", "Modeling", "Documentation"])
 
-    if df is not None:
+    if df is not None and TF_AVAILABLE:
         prepared = prepare_data(df, max_vocab_size=int(max_vocab_size), max_seq_limit=int(max_seq_limit))
     else:
         prepared = None
@@ -288,6 +303,9 @@ def main():
     with tab_data:
         if df is None:
             st.warning("Load a sentiment dataset file to continue.")
+        elif not TF_AVAILABLE:
+            render_eda(df)
+            st.warning("TensorFlow is not available, so tokenization, padding, and training are disabled.")
         else:
             render_eda(df)
             st.write(f"95th percentile sequence length (capped): {prepared['max_seq_len']}")

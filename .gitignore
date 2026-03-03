@@ -69,3 +69,32 @@ tensorflow_env/
 !Procfile
 !Dockerfile
 !.streamlit/config.toml
+
+# Final targeted cleanup for current Documents repo
+.dvc/
+.dvcignore
+BIGIPMacEdgeClient_v7245/
+BIOC 405 - Introduction to Biochemistry/
+D604 Task 2/
+GitHub/
+QSCI 381 A Su 23 - Intro to Probablity and Statistics/
+T_ONTIME_REPORTING.xlsx.dvc
+Warren's Notebook.url
+airport_encodings.json
+bookmarks_6_7_25.html
+d600-statistical-data-mining/
+d602-deployment-task-2/
+d602-deployment-task-3/
+d603-machine-learning/
+datathon2026/
+desktop.ini
+flight-delay-prediction/
+gitlab-ci.yml
+md__-win-tr7000_2-1_02-ea34_2/
+mlflow_experiment_uri.txt
+pat_-win-1_70_4-ea34_2/
+pipeline_env.yaml
+polynomial_regression.txt
+query.sql
+warren05@uw.edu_ATRData.TSV
+~D601 Task 1 Create an Interactive Dashboard__13640.twbr

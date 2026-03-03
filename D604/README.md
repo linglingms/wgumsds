@@ -79,6 +79,11 @@ Use either:
 
 If local files are not found in the task folder, use upload mode.
 
+For Task 1 on Streamlit Cloud, local files such as `images.npy` and `labels.csv` may not exist unless committed to the repository. If they are missing, use:
+
+- **Upload files** (`images.npy` + `labels.csv`), or
+- **Use Demo Data** button in the app.
+
 Task 2 expects `amazon_cells_labelled.txt` in `D604/Task2` (tab-separated with review and sentiment label).
 
 ## Output
@@ -92,6 +97,7 @@ After training, the app saves the trained model to:
 
 - If TensorFlow fails to install, confirm you are using Python 3.10 or 3.11.
 - If the app cannot find data files, switch to **Upload files** and provide `images.npy` and `labels.csv` manually.
+- If Task 1 shows missing local files in Cloud, click **Use Demo Data** to run the app immediately.
 - If Streamlit command is not recognized, run with:
 
 ```bash

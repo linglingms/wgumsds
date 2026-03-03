@@ -78,6 +78,14 @@ def build_cnn_model(input_shape, num_classes):
     return model
 
 
+def create_demo_dataset(samples_per_class: int = 10, image_size: int = 64, num_classes: int = 12):
+    rng = np.random.default_rng(42)
+    total = samples_per_class * num_classes
+    images = rng.integers(0, 256, size=(total, image_size, image_size, 3), dtype=np.uint8)
+    labels = np.array([f"class_{i}" for i in range(num_classes) for _ in range(samples_per_class)])
+    return images, labels
+
+
 def render_overview(images, labels):
     st.subheader("Exploratory Data Analysis")
 
@@ -288,9 +296,14 @@ def main():
                 missing.append(f"labels file not found: {local_labels}")
             if missing:
                 st.error("Local files could not be loaded:\n- " + "\n- ".join(missing))
-                st.info("Switch to Upload files and provide `images.npy` and `labels.csv`.")
+                st.info("On Streamlit Cloud, local workspace files are not available unless committed. Use Upload files.")
+                st.info("Upload `images.npy` and `labels.csv`, or use Demo Data below.")
         else:
-            st.info("Upload both `images.npy` and `labels.csv` to load data.")
+            st.info("Upload both `images.npy` and `labels.csv` to load data, or use Demo Data below.")
+
+        if st.button("Use Demo Data", type="secondary"):
+            images, labels = create_demo_dataset()
+            st.success("Loaded demo dataset so you can use the app immediately.")
 
     with tab_data:
         if images is None or labels is None:

@@ -255,6 +255,70 @@ def render_prepared_download(prepared):
     )
 
 
+def render_documentation(doc_path: str):
+    documentation_text = extract_docx_text(doc_path)
+    if documentation_text == "Documentation file not found.":
+        st.warning(documentation_text)
+        return
+
+    lines = [line.strip() for line in documentation_text.splitlines() if line.strip()]
+    if not lines:
+        st.warning("No documentation text found.")
+        return
+
+    section_pattern = re.compile(r"^Part\s+[IVXLC]+:\s*", re.IGNORECASE)
+    question_pattern = re.compile(r"^([A-Z]\.\s+|\d+\.\s+)")
+
+    current_section = "Documentation"
+    qa_items = []
+    current_question = None
+    current_answer_lines = []
+
+    def flush_question():
+        nonlocal current_question, current_answer_lines
+        if current_question:
+            qa_items.append(
+                {
+                    "section": current_section,
+                    "question": current_question,
+                    "answer": "\n".join(current_answer_lines).strip(),
+                }
+            )
+        current_question = None
+        current_answer_lines = []
+
+    for line in lines:
+        if section_pattern.match(line):
+            flush_question()
+            current_section = line
+            continue
+
+        is_question = bool(question_pattern.match(line)) or line.endswith("?")
+        if is_question:
+            flush_question()
+            current_question = line
+        else:
+            if current_question:
+                current_answer_lines.append(line)
+
+    flush_question()
+
+    if not qa_items:
+        st.info("Could not auto-structure this document. Showing raw text below.")
+    else:
+        shown_sections = set()
+        for item in qa_items:
+            if item["section"] not in shown_sections:
+                st.markdown(f"### {item['section']}")
+                shown_sections.add(item["section"])
+            with st.container(border=True):
+                st.markdown(f"**Question**\n\n{item['question']}")
+                st.markdown(f"**Answer**\n\n{item['answer'] or '_No answer provided._'}")
+
+    with st.expander("View raw documentation text"):
+        st.text_area("Raw Documentation", value=documentation_text, height=300)
+
+
 def main():
     st.title("D604 Task 2 - Sentiment Analysis with Neural Networks")
     st.caption("Interactive app version of your Task 2 notebook, including your documentation.")
@@ -332,8 +396,7 @@ def main():
     with tab_docs:
         st.subheader("Task Documentation")
         doc_path = st.text_input("Documentation (.docx) path", value=str(default_doc))
-        doc_text = extract_docx_text(doc_path)
-        st.text_area("Extracted Documentation", value=doc_text, height=500)
+        render_documentation(doc_path)
 
 
 if __name__ == "__main__":

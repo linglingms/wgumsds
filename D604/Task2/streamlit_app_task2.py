@@ -261,10 +261,11 @@ def main():
 
     default_doc = Path(__file__).parent / "D604 Task 2 Sentiment Analysis Using Neural Networks.docx"
     default_tsv = Path(__file__).parent / "amazon_cells_labelled.txt"
+    default_local_available = default_tsv.exists()
 
     with st.sidebar:
         st.markdown("### Data Source")
-        source = st.radio("Choose input method", ["Upload file", "Use local file"], index=0)
+        source = st.radio("Choose input method", ["Upload file", "Use local file"], index=1 if default_local_available else 0)
         uploaded_tsv = (
             st.file_uploader("Upload amazon_cells_labelled.txt", type=["txt", "tsv"])
             if source == "Upload file"
@@ -293,6 +294,13 @@ def main():
     except Exception as ex:
         st.error(f"Could not load dataset: {ex}")
 
+    if df is None:
+        if source == "Use local file":
+            st.error(f"Local dataset file not found: {local_tsv}")
+            st.info("Switch to Upload file and provide `amazon_cells_labelled.txt`.")
+        else:
+            st.info("Upload `amazon_cells_labelled.txt` to load data.")
+
     tab_data, tab_model, tab_docs = st.tabs(["Data & Prep", "Modeling", "Documentation"])
 
     if df is not None and TF_AVAILABLE:
@@ -314,7 +322,9 @@ def main():
             render_prepared_download(prepared)
 
     with tab_model:
-        if prepared is None:
+        if not TF_AVAILABLE:
+            st.warning("TensorFlow is not available in this environment, so model training is disabled.")
+        elif prepared is None:
             st.warning("Prepare data first to train and evaluate the model.")
         else:
             render_training(prepared, epochs=epochs, batch_size=batch_size)

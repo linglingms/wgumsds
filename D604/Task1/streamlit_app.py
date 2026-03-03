@@ -251,12 +251,17 @@ def main():
     default_doc_path = Path(__file__).parent / "D604 Task 1 Neural Networks.docx"
     default_images_path = Path(__file__).parent / "images.npy"
     default_labels_path = Path(__file__).parent / "labels.csv"
+    default_local_available = default_images_path.exists() and default_labels_path.exists()
 
     tab_data, tab_train, tab_docs = st.tabs(["Data & EDA", "Modeling", "Documentation"])
 
     with st.sidebar:
         st.markdown("### Dataset Source")
-        source = st.radio("Choose input method", ["Upload files", "Use local files"], index=0)
+        source = st.radio(
+            "Choose input method",
+            ["Upload files", "Use local files"],
+            index=1 if default_local_available else 0,
+        )
         uploaded_images = st.file_uploader("Upload images.npy", type=["npy"]) if source == "Upload files" else None
         uploaded_labels = st.file_uploader("Upload labels.csv", type=["csv"]) if source == "Upload files" else None
         local_images = st.text_input("Local images path", value=str(default_images_path)) if source == "Use local files" else None
@@ -273,6 +278,19 @@ def main():
                 images, labels, _ = load_dataset(f_img.read(), f_lbl.read())
     except Exception as ex:
         st.error(f"Could not load dataset: {ex}")
+
+    if images is None or labels is None:
+        if source == "Use local files":
+            missing = []
+            if not Path(local_images).exists():
+                missing.append(f"images file not found: {local_images}")
+            if not Path(local_labels).exists():
+                missing.append(f"labels file not found: {local_labels}")
+            if missing:
+                st.error("Local files could not be loaded:\n- " + "\n- ".join(missing))
+                st.info("Switch to Upload files and provide `images.npy` and `labels.csv`.")
+        else:
+            st.info("Upload both `images.npy` and `labels.csv` to load data.")
 
     with tab_data:
         if images is None or labels is None:

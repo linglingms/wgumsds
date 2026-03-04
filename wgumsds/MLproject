@@ -1,0 +1,10 @@
+name: flight-delay-prediction
+
+conda_env: conda.yaml
+
+entry_points:
+  main:
+    parameters:
+      num_alphas: {type: int, default: 20}
+    command: >
+      python poly_regressor_Python_1.0.0.ipynb

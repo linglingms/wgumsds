@@ -1,0 +1,8 @@
+
+# D604 generated training artifacts
+D604/d604task1_*.npy
+D604/d604task1_*.h5
+D604/Task1/d604task1_*.npy
+D604/Task1/d604task1_*.h5
+D604/Task1/d604_task1_cnn.keras
+D604/Task2/d604_task2_lstm.keras

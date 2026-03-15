@@ -60,11 +60,14 @@ def apply_custom_style() -> None:
                 radial-gradient(circle at top left, rgba(232, 246, 252, 0.95), transparent 35%),
                 linear-gradient(180deg, #f8fbfd 0%, #eef4f7 100%);
         }
+        .stApp, .stApp * {
+            color: #000000 !important;
+        }
         .hero {
             padding: 1.5rem 1.75rem;
             border-radius: 20px;
-            background: linear-gradient(135deg, rgba(11, 78, 108, 0.95), rgba(31, 122, 140, 0.88));
-            color: #f6fbfc;
+            background: linear-gradient(135deg, rgba(224, 240, 247, 0.98), rgba(209, 232, 242, 0.94));
+            color: #000000;
             box-shadow: 0 16px 40px rgba(19, 65, 82, 0.18);
             margin-bottom: 1rem;
         }

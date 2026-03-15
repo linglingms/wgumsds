@@ -1,33 +1,48 @@
 # WGU Data Science Projects
 
-This repository contains coursework and projects from my WGU Master’s in Data Science program.  
-Each folder corresponds to a different course or task.
+This repository contains coursework and deployment artifacts from the WGU Master's in Data Science program.
 
----
+## Active Streamlit Deployment
 
-## 📂 Repository Structure
+The repository is currently configured to deploy the D603 Task 3 time series modeling app.
 
-- **D598 Analytics Programming**  
-  Python-based programming assignments focusing on analytics and data manipulation.
+- Streamlit entrypoint: `D603/task3_app.py`
+- Dataset: `D603/d603task3_cleaned_data.csv`
+- Committed notebook forecast: `D603/d603task3_forecast.csv`
+- Documentation assets: `D603/D603 Task 3.docx` and `D603/D603 Task 3 Time Series Modeling.pdf`
 
-- **D601 Data Storytelling for Various Audiences**
-  Dashboard using Tablaeu to storytell data for non-technical audiences.
+## Repository Highlights
 
-- **D600 Statistical Data Mining**  
-  Projects involving statistical models and data mining techniques.
+- `D600/`: statistical data mining notebooks and datasets
+- `D602/`: deployment coursework
+- `D603/`: machine learning projects, including the deployed time series app
+- `D604/`: separate Streamlit apps for neural network tasks
+- `D606/`: capstone work
 
-- **D602 Deployment Task 2 & Task 3**  
-  FastAPI projects for deploying machine learning models.
+## Local Setup
 
-- **D603 Machine Learning**  
-  Implementations of supervised and unsupervised learning models.
+Recommended Python version: `3.11`
 
----
+Install the deployment dependencies from the repository root:
 
-## 🚀 How to Use
+```bash
+pip install -r requirements.txt
+```
 
-1. Clone the repo:
-   ```bash
-   git clone https://github.com/YOUR_USERNAME/YOUR_REPO.git
-   cd YOUR_REPO
+Run the D603 Streamlit app:
+
+```bash
+streamlit run D603/task3_app.py
+```
+
+## Streamlit Cloud
+
+Use these settings when creating or updating the Streamlit Cloud app:
+
+- Repository: this repository
+- Branch: `main`
+- Main file path: `D603/task3_app.py`
+- Python version: `3.11`
+
+The root `requirements.txt` and `runtime.txt` are aligned to that deployment target.
 

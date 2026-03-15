@@ -21,6 +21,28 @@ FORECAST_PATH = BASE_DIR / "d603task3_forecast.csv"
 DOC_PATH = BASE_DIR / "D603 Task 3.docx"
 PDF_PATH = BASE_DIR / "D603 Task 3 Time Series Modeling.pdf"
 
+JARGON_GLOSSARY = {
+    "Time series": "A sequence of values measured over time, like daily revenue.",
+    "Stationary": "A stable pattern over time where average level and variation stay fairly consistent.",
+    "Differencing": "Subtracting each value from the prior value to focus on change rather than raw level.",
+    "ARIMA": "A forecasting model that uses recent history and error patterns to predict future values.",
+    "ADF test": "A statistical test used to check whether a series is stable enough for time-series modeling.",
+    "ACF": "Shows how strongly values relate to earlier values at different time gaps.",
+    "PACF": "Shows direct relationships with earlier values after removing indirect effects.",
+    "Holdout set": "A final block of data not used for training, reserved for honest model evaluation.",
+    "MAE": "Mean absolute error; average absolute prediction miss size.",
+    "RMSE": "Root mean squared error; like MAE but penalizes larger misses more heavily.",
+    "Confidence interval": "A plausible range for future values, not a guarantee.",
+    "Seasonality": "A repeating pattern that occurs on a regular cycle, such as yearly behavior.",
+}
+
+TOPIC_KEYWORDS = {
+    "overview": ["dataset", "data", "overview", "preparation", "clean", "revenue", "day"],
+    "diagnostics": ["stationary", "adf", "acf", "pacf", "diagnostic", "differencing"],
+    "forecasts": ["forecast", "arima", "holdout", "rmse", "mae", "confidence", "prediction"],
+    "documentation": ["part", "task", "model", "evaluation"],
+}
+
 
 st.set_page_config(
     page_title="D603 Task 3 - Time Series Modeling",
@@ -91,6 +113,43 @@ def extract_docx_text(docx_path: str) -> str:
 
     lines = [line.strip() for line in text.splitlines() if line.strip()]
     return "\n".join(lines)
+
+
+def select_doc_snippets(doc_text: str, topic: str, max_items: int = 4) -> list[str]:
+    if not doc_text or doc_text == "Documentation file not found.":
+        return []
+
+    keywords = TOPIC_KEYWORDS.get(topic, [])
+    source_lines = [line.strip() for line in doc_text.splitlines() if line.strip()]
+    matches: list[str] = []
+
+    for line in source_lines:
+        lower_line = line.lower()
+        if any(keyword in lower_line for keyword in keywords):
+            matches.append(line)
+        if len(matches) >= max_items:
+            break
+
+    return matches
+
+
+def render_non_technical_guide(terms: list[str], title: str = "Jargon Buster") -> None:
+    st.markdown(f"#### {title}")
+    guide_rows = {term: JARGON_GLOSSARY[term] for term in terms if term in JARGON_GLOSSARY}
+    if guide_rows:
+        st.table(pd.DataFrame(guide_rows.items(), columns=["Term", "Plain-English meaning"]))
+
+
+def render_doc_context(doc_text: str, topic: str, heading: str) -> None:
+    st.markdown(f"#### {heading}")
+    snippets = select_doc_snippets(doc_text, topic=topic)
+
+    if not snippets:
+        st.info("No matching excerpts were found in the documentation for this section.")
+        return
+
+    for snippet in snippets:
+        st.markdown(f"- {snippet}")
 
 
 @st.cache_data
@@ -268,6 +327,7 @@ def render_documentation(doc_path: Path, pdf_path: Path) -> None:
 
 def main() -> None:
     apply_custom_style()
+    documentation_text = extract_docx_text(str(DOC_PATH))
 
     st.markdown(
         """
@@ -293,6 +353,19 @@ def main() -> None:
         st.caption(
             "The notebook baseline uses ARIMA(2, 1, 1) with the final 30 days reserved as the holdout set."
         )
+
+        with st.expander("Quick glossary for non-technical readers", expanded=False):
+            render_non_technical_guide(
+                [
+                    "Time series",
+                    "ARIMA",
+                    "Holdout set",
+                    "MAE",
+                    "RMSE",
+                    "Confidence interval",
+                ],
+                title="",
+            )
 
     if not DATA_PATH.exists():
         st.error(f"Dataset not found: {DATA_PATH}")
@@ -324,6 +397,12 @@ def main() -> None:
     )
 
     with overview_tab:
+        render_doc_context(documentation_text, topic="overview", heading="From Your Submitted Documentation")
+        render_non_technical_guide(
+            ["Time series", "Stationary", "Differencing"],
+            title="Overview Jargon Buster",
+        )
+
         summary_col, sample_col = st.columns([1.1, 0.9])
         with summary_col:
             st.subheader("Dataset Snapshot")
@@ -354,6 +433,12 @@ def main() -> None:
         )
 
     with diagnostics_tab:
+        render_doc_context(documentation_text, topic="diagnostics", heading="Diagnostic Notes from the Report")
+        render_non_technical_guide(
+            ["ADF test", "ACF", "PACF", "Seasonality", "Stationary", "Differencing"],
+            title="Diagnostics Jargon Buster",
+        )
+
         stationarity_label = "Non-stationary" if analysis["adf_pvalue"] > 0.05 else "Stationary"
         st.write(
             {
@@ -361,6 +446,14 @@ def main() -> None:
                 "Differenced series used for ACF/PACF": bool(analysis["adf_pvalue"] > 0.05),
             }
         )
+        if analysis["adf_pvalue"] > 0.05:
+            st.info(
+                "Interpretation: the baseline pattern drifts over time, so the app compares day-to-day changes"
+                " for diagnostics."
+            )
+        else:
+            st.info("Interpretation: the baseline level is stable enough for direct diagnostic plots.")
+
         series_for_diagnostics = differenced if analysis["adf_pvalue"] > 0.05 else df["Revenue"]
         st.pyplot(build_diagnostics_figure(series_for_diagnostics))
 
@@ -371,6 +464,12 @@ def main() -> None:
             st.info("Seasonal decomposition was not available for the current series length and period.")
 
     with forecast_tab:
+        render_doc_context(documentation_text, topic="forecasts", heading="Forecasting Highlights from the Report")
+        render_non_technical_guide(
+            ["ARIMA", "Holdout set", "MAE", "RMSE", "Confidence interval"],
+            title="Forecast Jargon Buster",
+        )
+
         forecast_metric_cols = st.columns(3)
         forecast_metric_cols[0].metric("Holdout MAE", f"{analysis['mae']:.4f}")
         forecast_metric_cols[1].metric("Forecast horizon", f"{future_steps} days")
@@ -381,6 +480,10 @@ def main() -> None:
 
         st.pyplot(build_holdout_figure(analysis))
         st.pyplot(build_future_figure(analysis))
+        st.caption(
+            "Plain-language readout: narrower confidence bands suggest less uncertainty; wider bands suggest"
+            " more uncertainty in longer-range predictions."
+        )
 
         future_export = pd.DataFrame(
             {
@@ -399,6 +502,8 @@ def main() -> None:
         )
 
     with docs_tab:
+        render_doc_context(documentation_text, topic="documentation", heading="Auto-Selected Report Excerpts")
+        render_non_technical_guide(list(JARGON_GLOSSARY.keys())[:8], title="Core Concepts")
         render_documentation(DOC_PATH, PDF_PATH)
 
 

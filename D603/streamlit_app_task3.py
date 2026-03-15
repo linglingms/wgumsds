@@ -63,6 +63,25 @@ def apply_custom_style() -> None:
         .stApp, .stApp * {
             color: #000000 !important;
         }
+        section[data-testid="stSidebar"] {
+            background: linear-gradient(180deg, #0e141a 0%, #101a22 100%) !important;
+        }
+        section[data-testid="stSidebar"] * {
+            color: #ffffff !important;
+        }
+        section[data-testid="stSidebar"] .stSlider,
+        section[data-testid="stSidebar"] .stNumberInput,
+        section[data-testid="stSidebar"] .stExpander {
+            border-radius: 12px;
+        }
+        section[data-testid="stSidebar"] input,
+        section[data-testid="stSidebar"] textarea,
+        section[data-testid="stSidebar"] [data-baseweb="select"] > div,
+        section[data-testid="stSidebar"] [data-baseweb="input"] > div {
+            color: #ffffff !important;
+            background-color: rgba(255, 255, 255, 0.08) !important;
+            border-color: rgba(255, 255, 255, 0.35) !important;
+        }
         .stButton > button[kind="primary"],
         .stDownloadButton > button,
         [data-baseweb="tab"][aria-selected="true"] {
@@ -165,43 +184,86 @@ def render_doc_context(doc_text: str, topic: str, heading: str) -> None:
 
 
 def render_algorithm_explainer(section: str) -> None:
+    st.markdown("#### How The Algorithms Are Used Here")
+
     if section == "overview":
-        st.markdown("#### How The Algorithms Are Used Here")
         st.markdown(
-            "- Data preparation algorithm: converts columns to numeric format, removes invalid rows, and forward-fills missing revenue values."
+            "This stage applies a deterministic preprocessing pipeline before any modeling happens."
         )
         st.markdown(
-            "- Purpose: this creates a clean, chronological time series that forecasting models can trust."
+            "1. Type coercion: `Day` and `Revenue` are converted to numeric so non-numeric artifacts are caught early."
+        )
+        st.markdown(
+            "2. Row filtering: rows with missing day/revenue after coercion are removed to preserve chronological integrity."
+        )
+        st.markdown(
+            "3. Temporal ordering: observations are sorted by `Day` and index is reset so lag operations are valid."
+        )
+        st.markdown(
+            "4. Missing-value policy: forward fill propagates the last known valid revenue value when gaps exist."
+        )
+        st.markdown(
+            "Why this matters: ARIMA and diagnostic tests assume an ordered, clean sequence. If ordering or missing values are inconsistent, lag-based features become misleading."
         )
     elif section == "diagnostics":
-        st.markdown("#### How The Algorithms Are Used Here")
         st.markdown(
-            "- ADF test algorithm: checks whether the revenue pattern is stable over time or still drifting."
+            "Diagnostics are used to decide whether raw revenue can be modeled directly or must be transformed first."
         )
         st.markdown(
-            "- ACF/PACF algorithms: measure correlation at different lags to guide ARIMA parameter choices."
+            "1. ADF test: evaluates null hypothesis of a unit root (non-stationarity). A small p-value supports stationarity."
         )
         st.markdown(
-            "- Seasonal decomposition algorithm: breaks the signal into trend, seasonality, and residual noise components."
+            "2. Differencing fallback: when p-value is high, the app analyzes first differences to stabilize mean behavior over time."
+        )
+        st.markdown(
+            "3. ACF: quantifies correlation at lag $k$ between $x_t$ and $x_{t-k}$; useful for MA order intuition."
+        )
+        st.markdown(
+            "4. PACF: isolates direct lag effects after controlling for intermediary lags; useful for AR order intuition."
+        )
+        st.markdown(
+            "5. Seasonal decomposition: separates signal into trend, repeating seasonal structure, and residual noise to explain where variation comes from."
+        )
+        st.markdown(
+            "Operational interpretation: this tab is the model risk check. It tells you whether assumptions are reasonable before trusting forecasts."
         )
     elif section == "forecasts":
-        st.markdown("#### How The Algorithms Are Used Here")
         st.markdown(
-            "- ARIMA model algorithm: learns from recent history plus error patterns to forecast upcoming values."
+            "Forecasting is performed in two passes so performance and future projection are both covered."
         )
         st.markdown(
-            "- Holdout evaluation: trains on older data and tests on the final window to estimate real-world performance."
+            "1. Holdout modeling pass: ARIMA($p,d,q$) is fit on train data only, then forecasts the held-out final window."
         )
         st.markdown(
-            "- MAE and RMSE algorithms: summarize forecast error size; RMSE penalizes larger misses more."
+            "2. Error scoring:"
         )
         st.markdown(
-            "- Confidence interval algorithm: gives an uncertainty band around each forecasted point."
+            "   - MAE = average absolute miss size (interpretable in revenue units)."
+        )
+        st.markdown(
+            "   - RMSE = square-rooted mean squared miss, which penalizes larger misses more heavily."
+        )
+        st.markdown(
+            "3. Full-history pass: ARIMA is refit on all available data and used to project `future_steps` days ahead."
+        )
+        st.markdown(
+            "4. Uncertainty quantification: forecast intervals come from the model's estimated forecast error variance."
+        )
+        st.markdown(
+            "Business interpretation: the center line is the model's best estimate, while interval width indicates confidence under historical behavior patterns."
         )
     elif section == "documentation":
-        st.markdown("#### How The Algorithms Are Used Here")
         st.markdown(
-            "- This section links each implemented method back to your submitted narrative, so readers can match code behavior with your written justification."
+            "This section is traceability-oriented: it ties implementation choices to your submitted written rationale."
+        )
+        st.markdown(
+            "1. Method linkage: doc excerpts are filtered by topical keywords and surfaced beside live outputs."
+        )
+        st.markdown(
+            "2. Narrative consistency check: users can compare the documented approach with model behavior in current runs."
+        )
+        st.markdown(
+            "3. Auditability: the original PDF and extracted text are available in-app for reviewer transparency."
         )
 
 

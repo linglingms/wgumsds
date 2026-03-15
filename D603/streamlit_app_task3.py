@@ -63,6 +63,15 @@ def apply_custom_style() -> None:
         .stApp, .stApp * {
             color: #000000 !important;
         }
+        .stButton > button[kind="primary"],
+        .stDownloadButton > button,
+        [data-baseweb="tab"][aria-selected="true"] {
+            color: #ffffff !important;
+        }
+        .stButton > button[kind="primary"] *,
+        .stDownloadButton > button * {
+            color: #ffffff !important;
+        }
         .hero {
             padding: 1.5rem 1.75rem;
             border-radius: 20px;
@@ -153,6 +162,47 @@ def render_doc_context(doc_text: str, topic: str, heading: str) -> None:
 
     for snippet in snippets:
         st.markdown(f"- {snippet}")
+
+
+def render_algorithm_explainer(section: str) -> None:
+    if section == "overview":
+        st.markdown("#### How The Algorithms Are Used Here")
+        st.markdown(
+            "- Data preparation algorithm: converts columns to numeric format, removes invalid rows, and forward-fills missing revenue values."
+        )
+        st.markdown(
+            "- Purpose: this creates a clean, chronological time series that forecasting models can trust."
+        )
+    elif section == "diagnostics":
+        st.markdown("#### How The Algorithms Are Used Here")
+        st.markdown(
+            "- ADF test algorithm: checks whether the revenue pattern is stable over time or still drifting."
+        )
+        st.markdown(
+            "- ACF/PACF algorithms: measure correlation at different lags to guide ARIMA parameter choices."
+        )
+        st.markdown(
+            "- Seasonal decomposition algorithm: breaks the signal into trend, seasonality, and residual noise components."
+        )
+    elif section == "forecasts":
+        st.markdown("#### How The Algorithms Are Used Here")
+        st.markdown(
+            "- ARIMA model algorithm: learns from recent history plus error patterns to forecast upcoming values."
+        )
+        st.markdown(
+            "- Holdout evaluation: trains on older data and tests on the final window to estimate real-world performance."
+        )
+        st.markdown(
+            "- MAE and RMSE algorithms: summarize forecast error size; RMSE penalizes larger misses more."
+        )
+        st.markdown(
+            "- Confidence interval algorithm: gives an uncertainty band around each forecasted point."
+        )
+    elif section == "documentation":
+        st.markdown("#### How The Algorithms Are Used Here")
+        st.markdown(
+            "- This section links each implemented method back to your submitted narrative, so readers can match code behavior with your written justification."
+        )
 
 
 @st.cache_data
@@ -401,6 +451,7 @@ def main() -> None:
 
     with overview_tab:
         render_doc_context(documentation_text, topic="overview", heading="From Your Submitted Documentation")
+        render_algorithm_explainer("overview")
         render_non_technical_guide(
             ["Time series", "Stationary", "Differencing"],
             title="Overview Jargon Buster",
@@ -437,6 +488,7 @@ def main() -> None:
 
     with diagnostics_tab:
         render_doc_context(documentation_text, topic="diagnostics", heading="Diagnostic Notes from the Report")
+        render_algorithm_explainer("diagnostics")
         render_non_technical_guide(
             ["ADF test", "ACF", "PACF", "Seasonality", "Stationary", "Differencing"],
             title="Diagnostics Jargon Buster",
@@ -468,6 +520,7 @@ def main() -> None:
 
     with forecast_tab:
         render_doc_context(documentation_text, topic="forecasts", heading="Forecasting Highlights from the Report")
+        render_algorithm_explainer("forecasts")
         render_non_technical_guide(
             ["ARIMA", "Holdout set", "MAE", "RMSE", "Confidence interval"],
             title="Forecast Jargon Buster",
@@ -506,6 +559,7 @@ def main() -> None:
 
     with docs_tab:
         render_doc_context(documentation_text, topic="documentation", heading="Auto-Selected Report Excerpts")
+        render_algorithm_explainer("documentation")
         render_non_technical_guide(list(JARGON_GLOSSARY.keys())[:8], title="Core Concepts")
         render_documentation(DOC_PATH, PDF_PATH)
 

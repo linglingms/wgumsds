@@ -164,19 +164,36 @@ nav a:focus-visible::after {
   transform: scaleX(1);
 }
 
-.resume-btn {
-  border: 1px solid var(--accent);
-  display: inline-block;
-  padding: 0.45rem 0.9rem;
-  border-radius: 6px;
-  font-weight: 500;
-  font-size: 0.9rem;
-  transition: all 0.3s;
-}
 
-.resume-btn:hover {
-  background: var(--accent);
+/* Modern, accessible button style for resume and other actions */
+.resume-btn {
+  display: inline-block;
+  padding: 0.55rem 1.2rem;
+  border-radius: 999px;
+  border: none;
+  background: linear-gradient(90deg, var(--accent) 60%, #a88fcf 100%);
   color: var(--bg);
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+  box-shadow: 0 2px 8px rgba(143,193,169,0.10);
+  cursor: pointer;
+  transition: background 0.22s, color 0.22s, box-shadow 0.22s, transform 0.13s;
+  outline: none;
+  border: 1.5px solid var(--accent);
+  position: relative;
+  overflow: hidden;
+}
+.resume-btn:focus-visible {
+  box-shadow: 0 0 0 3px #8fc1a9cc, 0 2px 8px rgba(143,193,169,0.10);
+}
+.resume-btn:hover, .resume-btn:active {
+  background: linear-gradient(90deg, #a88fcf 0%, var(--accent) 100%);
+  color: var(--fg);
+  transform: translateY(1px) scale(0.98);
+}
+.resume-btn:active {
+  box-shadow: 0 1px 4px rgba(143,193,169,0.13);
 }
 
 /* Sections */
@@ -366,24 +383,31 @@ footer {
 }
 
 /* Back to Top Button */
+
+/* Modern floating action button for back-to-top */
 #back-to-top {
   position: fixed;
   bottom: 30px;
   right: 30px;
-  background: var(--accent);
+  background: linear-gradient(135deg, var(--accent) 60%, #a88fcf 100%);
   color: var(--bg);
   border: none;
-  padding: 0.8rem 1.2rem;
-  border-radius: 50px;
-  font-size: 1.3rem;
+  padding: 0.9rem 1.25rem;
+  border-radius: 50%;
+  font-size: 1.45rem;
   cursor: pointer;
-  transition: transform 0.2s;
+  box-shadow: 0 4px 18px rgba(143,193,169,0.18);
+  transition: background 0.22s, color 0.22s, box-shadow 0.22s, transform 0.13s;
+  outline: none;
+  z-index: 1200;
 }
-
-#back-to-top:hover {
-  transform: scale(1.1);
-  background: var(--fg);
-  color: var(--bg);
+#back-to-top:focus-visible {
+  box-shadow: 0 0 0 3px #8fc1a9cc, 0 4px 18px rgba(143,193,169,0.18);
+}
+#back-to-top:hover, #back-to-top:active {
+  background: linear-gradient(135deg, #a88fcf 0%, var(--accent) 100%);
+  color: var(--fg);
+  transform: scale(1.08);
 }
 
 /* Fade-in animation */

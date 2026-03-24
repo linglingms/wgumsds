@@ -97,6 +97,20 @@
 
   <!-- JS -->
   <script>
+    const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('nav a').forEach(link => {
+      const href = link.getAttribute('href');
+      if (!href || href.startsWith('http') || href.startsWith('mailto:') || href.startsWith('#')) {
+        return;
+      }
+      if (href === currentPath) {
+        link.classList.add('is-active');
+      }
+    });
+
+    const pageHeader = document.querySelector('header');
+    const compactThreshold = 48;
+
     const faders = document.querySelectorAll('.fade-in');
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
@@ -110,9 +124,13 @@
     faders.forEach(f => observer.observe(f));
 
     const backToTop = document.getElementById('back-to-top');
-    window.addEventListener('scroll', () => {
+    const handleScroll = () => {
+      pageHeader.classList.toggle('is-compact', window.scrollY > compactThreshold);
       backToTop.style.display = window.scrollY > 300 ? 'block' : 'none';
-    });
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
     backToTop.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
   </script>
 </body>

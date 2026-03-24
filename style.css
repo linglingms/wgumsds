@@ -1,3 +1,105 @@
+/* Hamburger menu styles */
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem 0.7rem;
+  margin: 0 0.2rem;
+  z-index: 1201;
+  position: relative;
+  height: 2.2rem;
+  width: 2.2rem;
+  align-items: center;
+  justify-content: center;
+}
+.hamburger span {
+  display: block;
+  width: 26px;
+  height: 3px;
+  margin: 5px 0;
+  background: var(--accent);
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+.hamburger.active span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Super compact header mode */
+header.is-super-compact {
+  min-height: 0;
+  padding-top: 0.1rem;
+  padding-bottom: 0.1rem;
+  background: rgba(27, 59, 47, 0.92);
+}
+header.is-super-compact .profile-pic,
+header.is-super-compact .header-text h1,
+header.is-super-compact .header-text .tagline,
+header.is-super-compact .resume-btn {
+  display: none !important;
+}
+header.is-super-compact .hamburger {
+  display: flex !important;
+}
+
+/* Mobile nav overlay */
+#main-nav.mobile-hidden {
+  display: none !important;
+}
+#main-nav.mobile-overlay {
+  display: flex !important;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(27, 59, 47, 0.98);
+  z-index: 1200;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  font-size: 1.3rem;
+  box-shadow: 0 0 0 100vw rgba(0,0,0,0.2);
+}
+#main-nav.mobile-overlay a {
+  color: var(--accent);
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  padding: 1rem 2.5rem;
+  border-radius: 12px;
+  transition: background 0.2s, color 0.2s;
+}
+#main-nav.mobile-overlay a:hover {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+@media (max-width: 700px) {
+  .hamburger {
+    display: flex;
+  }
+  nav {
+    transition: none;
+  }
+  #main-nav {
+    display: none;
+  }
+  header:not(.is-super-compact) #main-nav {
+    display: flex;
+  }
+  header.is-super-compact #main-nav {
+    display: none !important;
+  }
+}
 /* Import font */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 

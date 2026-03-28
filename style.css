@@ -518,28 +518,6 @@ footer {
 
 /* Modern floating action button for back-to-top */
 #back-to-top {
-.lab-bg {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: -2;
-  background: url('lab-bg.jpg') center center/cover no-repeat;
-  opacity: 0.22;
-  pointer-events: none;
-}
-
-.lab-bg-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: -1;
-  background: rgba(255,255,255,0.55);
-  pointer-events: none;
-}
   position: fixed;
   bottom: 30px;
   right: 30px;

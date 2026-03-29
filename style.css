@@ -518,19 +518,20 @@ h2 {
 }
 
 /* Footer */
-footer {
-  text-align: center;
-  padding: 2rem 2rem;
-  border-top: 1px solid #000;
-  color: var(--muted);
+header {
+  background: linear-gradient(135deg, rgba(27, 59, 47, 0.85), rgba(27, 59, 47, 0.85)), url('./bioinfo-background.webp');
+  background-size: cover;
+  background-position: center;
+  z-index: 1000;
+  /* Removed border-bottom for no white bar */
+  padding: 0.25rem 2.2rem;
+  min-height: 62px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+  transition: padding 0.25s ease, background-color 0.25s ease;
 }
-
-/* Back to Top Button */
-
-/* Modern floating action button for back-to-top */
-#back-to-top {
-  position: fixed;
-  bottom: 30px;
   right: 30px;
   background: linear-gradient(135deg, var(--accent) 60%, #a88fcf 100%);
   color: var(--bg);
@@ -597,7 +598,8 @@ footer {
   margin-bottom: 0.7rem;
 }
 .slider-images {
-  position: relative;
+  justify-content: center;
+  text-align: center;
   width: 260px;
   height: 180px;
   overflow: hidden;
@@ -616,6 +618,7 @@ footer {
   transition: opacity 0.4s;
   opacity: 0;
 }
+    align-items: center;
 .slide.active {
   display: block;
   opacity: 1;

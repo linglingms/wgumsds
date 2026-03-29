@@ -21,11 +21,14 @@ header {
   background-position: center;
   z-index: 1000;
   border-bottom: 1px solid #000;
-  padding: 0.15rem 0.3rem; /* Force half padding */
-  min-height: 36px;
-  max-height: 56px;
+  padding: 0.45rem 1.2rem;
+  min-height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   backdrop-filter: blur(4px);
   transition: padding 0.25s ease, background-color 0.25s ease;
+}
 }
 /* Hamburger menu styles */
 .hamburger {
@@ -178,42 +181,49 @@ header {
 .header-container {
   display: flex;
   align-items: center;
-  gap: 0.25rem;
-  flex-wrap: wrap;
-  justify-content: center;
-  text-align: center;
-  min-height: 32px;
-  max-height: 48px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 1.2rem;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  text-align: left;
 }
 
 .profile-pic {
-  width: 32px;
-  height: 32px;
+  width: 54px;
+  height: 54px;
   border-radius: 50%;
   object-fit: cover;
   object-position: center 40%;
-  border: 1.5px solid var(--accent);
+  border: 2px solid var(--accent);
   margin-bottom: 0;
+  margin-right: 1.1rem;
   transition: width 0.25s ease, height 0.25s ease, margin-bottom 0.25s ease;
 }
 
 .header-text {
-  flex: 1;
-  min-width: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 180px;
+  flex: 1 1 auto;
 }
 
 .header-text h1 {
   margin: 0;
-  font-size: 0.85rem;
+  font-size: 1.25rem;
   color: var(--accent);
+  font-weight: 700;
   transition: font-size 0.25s ease;
 }
 
 .header-text .tagline {
   color: var(--muted);
-  font-size: 0.36rem;
-  margin-top: 0.08rem;
+  font-size: 0.92rem;
+  margin-top: 0.18rem;
   margin-bottom: 0.12rem;
+  font-weight: 400;
   transition: margin 0.25s ease, font-size 0.25s ease, opacity 0.2s ease;
 }
 
@@ -239,12 +249,10 @@ header.is-compact .header-text .tagline {
 }
 
 nav {
-  width: 100%;
   display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 0.09rem 0.22rem;
-  margin-top: 0.09rem;
+  align-items: center;
+  gap: 0.7rem;
+  margin-left: auto;
 }
 
 nav a {
@@ -252,8 +260,8 @@ nav a {
   color: var(--accent);
   text-decoration: none;
   font-weight: 500;
-  font-size: 0.38rem;
-  padding: 0.07rem 0.09rem;
+  font-size: 1rem;
+  padding: 0.25rem 0.7rem;
   border: 1px solid transparent;
   border-radius: 6px;
   position: relative;
@@ -303,13 +311,13 @@ nav a:focus-visible::after {
 /* Modern, accessible button style for resume and other actions */
 .resume-btn {
   display: inline-block;
-  padding: 0.14rem 0.3rem;
+  padding: 0.32rem 1.1rem;
   border-radius: 999px;
   border: none;
   background: linear-gradient(90deg, var(--accent) 60%, #a88fcf 100%);
   color: var(--bg);
   font-weight: 600;
-  font-size: 0.32rem;
+  font-size: 1rem;
   letter-spacing: 0.02em;
   box-shadow: 0 2px 8px rgba(143,193,169,0.10);
   cursor: pointer;
@@ -318,6 +326,7 @@ nav a:focus-visible::after {
   border: 1.5px solid var(--accent);
   position: relative;
   overflow: hidden;
+  margin-left: 0.7rem;
 }
 .resume-btn:focus-visible {
   box-shadow: 0 0 0 3px #8fc1a9cc, 0 2px 8px rgba(143,193,169,0.10);

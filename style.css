@@ -15,20 +15,17 @@ body {
   line-height: 1.7;
 }
 /* Header styles */
-  header {
-    background: linear-gradient(135deg, rgba(27, 59, 47, 0.85), rgba(27, 59, 47, 0.85)), url('./bioinfo-background.webp');
-    background-size: cover;
-    background-position: center;
-    z-index: 1000;
-    border-bottom: 1px solid #000;
-    padding: 0.15rem 0.3rem; /* Force half padding */
-    min-height: 36px;
-    max-height: 56px;
-    backdrop-filter: blur(4px);
-    transition: padding 0.25s ease, background-color 0.25s ease;
-  }
-  }
-  }
+header {
+  background: linear-gradient(135deg, rgba(27, 59, 47, 0.85), rgba(27, 59, 47, 0.85)), url('./bioinfo-background.webp');
+  background-size: cover;
+  background-position: center;
+  z-index: 1000;
+  border-bottom: 1px solid #000;
+  padding: 0.15rem 0.3rem; /* Force half padding */
+  min-height: 36px;
+  max-height: 56px;
+  backdrop-filter: blur(4px);
+  transition: padding 0.25s ease, background-color 0.25s ease;
 }
 /* Hamburger menu styles */
 .hamburger {

@@ -65,24 +65,28 @@
   <button id="back-to-top">⬆️</button>
 
   <!-- JS -->
-    <header>
-      <div class="header-container">
-        <img src="profile.jpg" alt="Profile Picture" class="profile-pic">
-        <div class="header-text">
-          <h1>Warren Buenarte</h1>
-          <div class="tagline">Data Scientist | ML Engineer</div>
-        </div>
-        <nav id="main-nav">
-          <a href="index.html">Home</a>
-          <a href="projects.html">Projects</a>
-          <a href="skills.html" class="is-active">Skills</a>
-          <a href="education.html">Education</a>
-          <a href="experience.html">Experience</a>
-          <a href="contact.html">Contact</a>
-          <a href="resume.pdf" class="resume-btn" target="_blank" rel="noopener">Resume</a>
-        </nav>
-      </div>
-    </header>
+  <script>
+    const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('nav a').forEach(link => {
+      const href = link.getAttribute('href');
+      if (!href || href.startsWith('http') || href.startsWith('mailto:') || href.startsWith('#')) {
+        return;
+      }
+      if (href === currentPath) {
+        link.classList.add('is-active');
+      }
+    });
+
+    const pageHeader = document.querySelector('header');
+    const compactThreshold = 48;
+    const superCompactThreshold = 120;
+    const hamburger = document.querySelector('.hamburger');
+    const mainNav = document.getElementById('main-nav');
+    let menuOpen = false;
+
+    const faders = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
           observer.unobserve(entry.target);
@@ -94,6 +98,17 @@
 
     const backToTop = document.getElementById('back-to-top');
     const handleScroll = () => {
+      // Super compact mode for mobile
+      if (window.innerWidth <= 700) {
+        if (window.scrollY > superCompactThreshold && !menuOpen) {
+          pageHeader.classList.add('is-super-compact');
+        } else {
+          pageHeader.classList.remove('is-super-compact');
+        }
+      } else {
+        pageHeader.classList.remove('is-super-compact');
+      }
+      // Normal compact mode for desktop
       pageHeader.classList.toggle('is-compact', window.scrollY > compactThreshold);
       backToTop.style.display = window.scrollY > 300 ? 'block' : 'none';
     };

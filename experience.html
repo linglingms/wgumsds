@@ -58,7 +58,8 @@
               <a href="resume.pdf" class="resume-btn" target="_blank" rel="noopener">Resume</a>
             </nav>
           </div>
-        </header>
+  <!-- Back to Top -->
+  <button id="back-to-top">⬆️</button>
 
   <!-- JS -->
   <script>
@@ -75,6 +76,10 @@
 
     const pageHeader = document.querySelector('header');
     const compactThreshold = 48;
+    const superCompactThreshold = 120;
+    const hamburger = document.querySelector('.hamburger');
+    const mainNav = document.getElementById('main-nav');
+    let menuOpen = false;
 
     const faders = document.querySelectorAll('.fade-in');
     const observer = new IntersectionObserver(entries => {
@@ -90,6 +95,17 @@
 
     const backToTop = document.getElementById('back-to-top');
     const handleScroll = () => {
+      // Super compact mode for mobile
+      if (window.innerWidth <= 700) {
+        if (window.scrollY > superCompactThreshold && !menuOpen) {
+          pageHeader.classList.add('is-super-compact');
+        } else {
+          pageHeader.classList.remove('is-super-compact');
+        }
+      } else {
+        pageHeader.classList.remove('is-super-compact');
+      }
+      // Normal compact mode for desktop
       pageHeader.classList.toggle('is-compact', window.scrollY > compactThreshold);
       backToTop.style.display = window.scrollY > 300 ? 'block' : 'none';
     };

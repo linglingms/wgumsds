@@ -33,27 +33,21 @@
       </nav>
 
   <main class="container">
-
     <!-- Contact Section -->
-    <section id="contact" class="section fade-in">
-      <div class="info-box">
-        <h2>📬 Contact</h2>
-        <div class="contact-content">
-          <p>I'd love to hear from you! Feel free to reach out through any of the following:</p>
-          <div class="contact-info">
-            <p><strong>Email:</strong> <a href="mailto:warrenbuenarte@gmail.com">warrenbuenarte@gmail.com</a></p>
-            <p><strong>Phone:</strong> 253-202-4706</p>
-            <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/warren05" target="_blank">linkedin.com/in/warren05</a></p>
-          </div>
+    <div id="contact" class="section fade-in info-box">
+      <h2>📬 Contact</h2>
+      <div class="contact-content">
+        <p>I'd love to hear from you! Feel free to reach out through any of the following:</p>
+        <div class="contact-info">
+          <p><strong>Email:</strong> <a href="mailto:warrenbuenarte@gmail.com">warrenbuenarte@gmail.com</a></p>
+          <p><strong>Phone:</strong> 253-202-4706</p>
+          <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/warren05" target="_blank">linkedin.com/in/warren05</a></p>
         </div>
       </div>
-    </section>
-
+    </div>
   </main>
-
-      </main>
-      <button id="back-to-top">⬆️</button>
-      <script>
+  <button id="back-to-top">⬆️</button>
+  <script>
         // Highlight current nav link
         const currentPath = window.location.pathname.split('/').pop() || 'index.html';
         document.querySelectorAll('nav a').forEach(link => {
@@ -76,8 +70,7 @@
         const backToTop = document.getElementById('back-to-top');
         backToTop.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
       </script>
-      <footer>
-        <p>© 2026 Warren Buenarte. All rights reserved.</p>
-      </footer>
-    </body>
-            mainNav.classList.add('mobile-overlay');
+  <footer>
+    <p>© 2026 Warren Buenarte. All rights reserved.</p>
+  </footer>
+</body>

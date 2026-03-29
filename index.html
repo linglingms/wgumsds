@@ -139,6 +139,19 @@
     });
     showSlide(0);
 
+
+    // Fade-in animation for all .fade-in elements
+    const faders = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    faders.forEach(f => observer.observe(f));
+
     // Back to top button
     const backToTop = document.getElementById('back-to-top');
     backToTop.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });

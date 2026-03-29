@@ -48,28 +48,30 @@
   </main>
   <button id="back-to-top">⬆️</button>
   <script>
-        // Highlight current nav link
-        const currentPath = window.location.pathname.split('/').pop() || 'index.html';
-        document.querySelectorAll('nav a').forEach(link => {
-          const href = link.getAttribute('href');
-          if (!href || href.startsWith('http') || href.startsWith('mailto:') || href.startsWith('#')) return;
-          if (href === currentPath) link.classList.add('is-active');
-        });
-        // Fade-in animation
-        const faders = document.querySelectorAll('.fade-in');
-        const observer = new IntersectionObserver(entries => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('visible');
-              observer.unobserve(entry.target);
-            }
-          });
-        }, { threshold: 0.1 });
-        faders.forEach(f => observer.observe(f));
-        // Back to top button
-        const backToTop = document.getElementById('back-to-top');
-        backToTop.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
-      </script>
+    // Highlight current nav link
+    const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('nav a').forEach(link => {
+      const href = link.getAttribute('href');
+      if (!href || href.startsWith('http') || href.startsWith('mailto:') || href.startsWith('#')) return;
+      if (href === currentPath) link.classList.add('is-active');
+    });
+
+    // Fade-in animation for all .fade-in elements
+    const faders = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    faders.forEach(f => observer.observe(f));
+
+    // Back to top button
+    const backToTop = document.getElementById('back-to-top');
+    backToTop.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+  </script>
   <footer>
     <p>© 2026 Warren Buenarte. All rights reserved.</p>
   </footer>

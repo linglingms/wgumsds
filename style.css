@@ -22,9 +22,10 @@ body {
     background-position: center;
     z-index: 1000;
     border-bottom: 1px solid #000;
-    padding: 0.6rem 1.25rem;
+    padding: 0.3rem 0.6rem; /* Shrunk padding */
     backdrop-filter: blur(4px);
     transition: padding 0.25s ease, background-color 0.25s ease;
+  }
   }
 }
 /* Hamburger menu styles */
@@ -178,40 +179,40 @@ header {
 .header-container {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.5rem; /* Shrunk gap */
   flex-wrap: wrap;
   justify-content: center;
   text-align: center;
 }
 
 .profile-pic {
-  width: 110px;
-  height: 110px;
+  width: 55px;
+  height: 55px;
   border-radius: 50%;
   object-fit: cover;
   object-position: center 40%;
   border: 2px solid var(--accent);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.25rem;
   transition: width 0.25s ease, height 0.25s ease, margin-bottom 0.25s ease;
 }
 
 .header-text {
   flex: 1;
-  min-width: 250px;
+  min-width: 125px;
 }
 
 .header-text h1 {
   margin: 0;
-  font-size: 2.2rem;
+  font-size: 1.1rem;
   color: var(--accent);
   transition: font-size 0.25s ease;
 }
 
 .header-text .tagline {
   color: var(--muted);
-  font-size: 1rem;
-  margin-top: 0.35rem;
-  margin-bottom: 0.75rem;
+  font-size: 0.5rem;
+  margin-top: 0.18rem;
+  margin-bottom: 0.38rem;
   transition: margin 0.25s ease, font-size 0.25s ease, opacity 0.2s ease;
 }
 
@@ -241,8 +242,8 @@ nav {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 0.35rem 0.9rem;
-  margin-top: 0.35rem;
+  gap: 0.18rem 0.45rem;
+  margin-top: 0.18rem;
 }
 
 nav a {
@@ -250,8 +251,8 @@ nav a {
   color: var(--accent);
   text-decoration: none;
   font-weight: 500;
-  font-size: 0.95rem;
-  padding: 0.25rem 0.35rem;
+  font-size: 0.48rem;
+  padding: 0.13rem 0.18rem;
   border: 1px solid transparent;
   border-radius: 6px;
   position: relative;
@@ -301,13 +302,13 @@ nav a:focus-visible::after {
 /* Modern, accessible button style for resume and other actions */
 .resume-btn {
   display: inline-block;
-  padding: 0.55rem 1.2rem;
+  padding: 0.28rem 0.6rem;
   border-radius: 999px;
   border: none;
   background: linear-gradient(90deg, var(--accent) 60%, #a88fcf 100%);
   color: var(--bg);
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 0.5rem;
   letter-spacing: 0.02em;
   box-shadow: 0 2px 8px rgba(143,193,169,0.10);
   cursor: pointer;

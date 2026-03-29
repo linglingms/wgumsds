@@ -53,70 +53,66 @@
 
   <!-- Back to Top -->
   <button id="back-to-top">⬆️</button>
+    <button id="back-to-top">⬆️</button>
 
-  <!-- JS -->
-    <header>
-      <div class="header-container">
-        <img src="profile.jpg" alt="Profile Picture" class="profile-pic">
-  <!-- Back to Top -->
-  <button id="back-to-top">⬆️</button>
-
-  <!-- JS -->
-  <script>
-    const currentPath = window.location.pathname.split('/').pop() || 'index.html';
-    document.querySelectorAll('nav a').forEach(link => {
-      const href = link.getAttribute('href');
-      if (!href || href.startsWith('http') || href.startsWith('mailto:') || href.startsWith('#')) {
-        return;
-      }
-      if (href === currentPath) {
-        link.classList.add('is-active');
-      }
-    });
-
-    const pageHeader = document.querySelector('header');
-    const compactThreshold = 48;
-    const superCompactThreshold = 120;
-    const hamburger = document.querySelector('.hamburger');
-    const mainNav = document.getElementById('main-nav');
-    let menuOpen = false;
-
-    const faders = document.querySelectorAll('.fade-in');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
+    <!-- JS -->
+    <script>
+      const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+      document.querySelectorAll('nav a').forEach(link => {
+        const href = link.getAttribute('href');
+        if (!href || href.startsWith('http') || href.startsWith('mailto:') || href.startsWith('#')) {
+          return;
+        }
+        if (href === currentPath) {
+          link.classList.add('is-active');
         }
       });
-    }, { threshold: 0.1 });
 
-    faders.forEach(f => observer.observe(f));
+      const pageHeader = document.querySelector('header');
+      const compactThreshold = 48;
+      const superCompactThreshold = 120;
+      const hamburger = document.querySelector('.hamburger');
+      const mainNav = document.getElementById('main-nav');
+      let menuOpen = false;
 
-    const backToTop = document.getElementById('back-to-top');
-    const handleScroll = () => {
-      // Super compact mode for mobile
-      if (window.innerWidth <= 700) {
-        if (window.scrollY > superCompactThreshold && !menuOpen) {
-          pageHeader.classList.add('is-super-compact');
+      const faders = document.querySelectorAll('.fade-in');
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+
+      faders.forEach(f => observer.observe(f));
+
+      const backToTop = document.getElementById('back-to-top');
+      const handleScroll = () => {
+        // Super compact mode for mobile
+        if (window.innerWidth <= 700) {
+          if (window.scrollY > superCompactThreshold && !menuOpen) {
+            pageHeader.classList.add('is-super-compact');
+          } else {
+            pageHeader.classList.remove('is-super-compact');
+          }
         } else {
           pageHeader.classList.remove('is-super-compact');
         }
-      } else {
-        pageHeader.classList.remove('is-super-compact');
-      }
-      // Normal compact mode for desktop
-      pageHeader.classList.toggle('is-compact', window.scrollY > compactThreshold);
-      backToTop.style.display = window.scrollY > 300 ? 'block' : 'none';
-    };
+        // Normal compact mode for desktop
+        pageHeader.classList.toggle('is-compact', window.scrollY > compactThreshold);
+        backToTop.style.display = window.scrollY > 300 ? 'block' : 'none';
+      };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
-    backToTop.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
-  </script>
-</body>
+      window.addEventListener('scroll', handleScroll, { passive: true });
+      handleScroll();
+      backToTop.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+    </script>
+
+    <footer>
+      <p>© 2026 Warren Buenarte. All rights reserved.</p>
+    </footer>
+
+  </body>
+  </html>
 </html>
-
-<footer>
-  <p>© 2026 Warren Buenarte. All rights reserved.</p>
-</footer>

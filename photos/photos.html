@@ -7,6 +7,12 @@
   <link rel="icon" href="../favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="../style.css">
   <style>
+        /* Debug border for gallery visibility */
+        .photo-gallery {
+          border: 3px dashed #ff6f61;
+          background: #222;
+          min-height: 100px;
+        }
     .photo-gallery {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -85,6 +91,9 @@
     <section class="section fade-in">
       <h2>📸 Photo Gallery</h2>
       <div class="photo-gallery">
+          <!-- If you see this message, the gallery is rendering but no images are found. -->
+          <!-- Remove this after debugging. -->
+          <noscript><div style="color: #fff; padding: 1rem;">If you see this, JavaScript is disabled or the gallery is not rendering images.</div></noscript>
         <div class="photo-card">
           <img src="IMG_3144.png" alt="Mountains and Lake">
           <div class="photo-caption">A peaceful mountain lake on a sunny day</div>

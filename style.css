@@ -219,7 +219,7 @@ header {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  gap: 1.2rem;
+    gap: 1.1rem;
   flex-wrap: nowrap;
   justify-content: space-between;
   text-align: left;
@@ -229,12 +229,13 @@ header {
   width: 54px;
   height: 54px;
   border-radius: 50%;
-  object-fit: cover;
-  object-position: center 40%;
-  border: 2px solid var(--accent);
-  margin-bottom: 0;
-  margin-right: 1.1rem;
-  transition: width 0.25s ease, height 0.25s ease, margin-bottom 0.25s ease;
+    object-fit: cover;
+    object-position: center 40%;
+    border: 2.5px solid var(--accent);
+    margin-bottom: 0;
+    margin-right: 1.2rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.13);
+    transition: width 0.25s, height 0.25s, margin-bottom 0.25s, border-radius 0.25s;
 }
 
 .header-text {
@@ -243,6 +244,7 @@ header {
   justify-content: center;
   min-width: 180px;
   flex: 1 1 auto;
+    margin-left: 0;
 }
 
 .header-text h1 {

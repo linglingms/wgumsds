@@ -129,49 +129,23 @@
     const pageHeader = document.querySelector('header');
     const compactThreshold = 48;
     const superCompactThreshold = 120;
-    const hamburger = document.querySelector('.hamburger');
     const mainNav = document.getElementById('main-nav');
+    const hamburger = document.querySelector('.hamburger');
     let menuOpen = false;
-
-    const faders = document.querySelectorAll('.fade-in');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1 });
-
-    faders.forEach(f => observer.observe(f));
-
-    const backToTop = document.getElementById('back-to-top');
-    const handleScroll = () => {
-      // Super compact mode for mobile
-      if (window.innerWidth <= 700) {
-        if (window.scrollY > superCompactThreshold && !menuOpen) {
-          pageHeader.classList.add('is-super-compact');
-        } else {
-          pageHeader.classList.remove('is-super-compact');
-        }
+    // Hamburger menu toggle only
+    hamburger.addEventListener('click', () => {
+      menuOpen = !menuOpen;
+      hamburger.classList.toggle('active', menuOpen);
+      if (menuOpen) {
+        mainNav.classList.add('mobile-overlay');
+        mainNav.classList.remove('mobile-hidden');
+        hamburger.setAttribute('aria-expanded', 'true');
       } else {
-        pageHeader.classList.remove('is-super-compact');
+        mainNav.classList.remove('mobile-overlay');
+        mainNav.classList.add('mobile-hidden');
+        hamburger.setAttribute('aria-expanded', 'false');
       }
-      // Normal compact mode for desktop
-      pageHeader.classList.toggle('is-compact', window.scrollY > compactThreshold);
-      backToTop.style.display = window.scrollY > 300 ? 'block' : 'none';
-    };
-
-    // Hamburger menu toggle
-    if (hamburger && mainNav) {
-      hamburger.addEventListener('click', () => {
-    // Image Slider Functionality
-    const slides = document.querySelectorAll('.slide');
-    const dots = document.querySelectorAll('.dot');
-    let currentSlide = 0;
-
-    function showSlide(index) {
-      slides.forEach((slide, i) => {
+    });
         slide.classList.toggle('active', i === index);
       });
       dots.forEach((dot, i) => {

@@ -80,9 +80,6 @@
       }
     });
 
-    const pageHeader = document.querySelector('header');
-    const compactThreshold = 48;
-    const superCompactThreshold = 120;
     const hamburger = document.querySelector('.hamburger');
     const mainNav = document.getElementById('main-nav');
     let menuOpen = false;
@@ -100,26 +97,23 @@
     faders.forEach(f => observer.observe(f));
 
     const backToTop = document.getElementById('back-to-top');
-    const handleScroll = () => {
-      // Super compact mode for mobile
-      if (window.innerWidth <= 700) {
-        if (window.scrollY > superCompactThreshold && !menuOpen) {
-          pageHeader.classList.add('is-super-compact');
-        } else {
-          pageHeader.classList.remove('is-super-compact');
-        }
-      } else {
-        pageHeader.classList.remove('is-super-compact');
-      }
-      // Normal compact mode for desktop
-      pageHeader.classList.toggle('is-compact', window.scrollY > compactThreshold);
-      backToTop.style.display = window.scrollY > 300 ? 'block' : 'none';
-    };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
     backToTop.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
   </script>
+    // Hamburger menu toggle only
+    hamburger.addEventListener('click', () => {
+      menuOpen = !menuOpen;
+      hamburger.classList.toggle('active', menuOpen);
+      if (menuOpen) {
+        mainNav.classList.add('mobile-overlay');
+        mainNav.classList.remove('mobile-hidden');
+        hamburger.setAttribute('aria-expanded', 'true');
+      } else {
+        mainNav.classList.remove('mobile-overlay');
+        mainNav.classList.add('mobile-hidden');
+        hamburger.setAttribute('aria-expanded', 'false');
+      }
+    });
 
   <footer>
     <p>© 2026 Warren Buenarte. All rights reserved.</p>

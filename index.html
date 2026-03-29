@@ -142,15 +142,21 @@
 
     // Fade-in animation for all .fade-in elements
     const faders = document.querySelectorAll('.fade-in');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1 });
-    faders.forEach(f => observer.observe(f));
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      faders.forEach(f => observer.observe(f));
+    } else {
+      // Fallback: show all fade-in elements immediately
+      faders.forEach(f => f.classList.add('visible'));
+    }
 
     // Back to top button
     const backToTop = document.getElementById('back-to-top');

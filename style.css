@@ -15,17 +15,17 @@ body {
   line-height: 1.7;
 }
 /* Header styles */
-header {
-  position: sticky;
-  top: 0;
-  background: linear-gradient(135deg, rgba(27, 59, 47, 0.85), rgba(27, 59, 47, 0.85)), url('./bioinfo-background.webp');
-  background-size: cover;
-  background-position: center;
-  z-index: 1000;
-  border-bottom: 1px solid #000;
-  padding: 0.6rem 1.25rem;
-  backdrop-filter: blur(4px);
-  transition: padding 0.25s ease, background-color 0.25s ease;
+  header {
+    /* Not sticky by default, only super-compact on mobile via JS */
+    background: linear-gradient(135deg, rgba(27, 59, 47, 0.85), rgba(27, 59, 47, 0.85)), url('./bioinfo-background.webp');
+    background-size: cover;
+    background-position: center;
+    z-index: 1000;
+    border-bottom: 1px solid #000;
+    padding: 0.6rem 1.25rem;
+    backdrop-filter: blur(4px);
+    transition: padding 0.25s ease, background-color 0.25s ease;
+  }
 }
 /* Hamburger menu styles */
 .hamburger {
@@ -61,21 +61,23 @@ header {
   transform: translateY(-8px) rotate(-45deg);
 }
 
-/* Super compact header mode */
-header.is-super-compact {
-  min-height: 0;
-  padding-top: 0.1rem;
-  padding-bottom: 0.1rem;
-  background: rgba(27, 59, 47, 0.92);
-}
-header.is-super-compact .profile-pic,
-header.is-super-compact .header-text h1,
-header.is-super-compact .header-text .tagline,
-header.is-super-compact .resume-btn {
-  display: none !important;
-}
-header.is-super-compact .hamburger {
-  display: flex !important;
+/* Super compact header mode: only on mobile (<=700px) */
+@media (max-width: 700px) {
+  header.is-super-compact {
+    min-height: 0;
+    padding-top: 0.1rem;
+    padding-bottom: 0.1rem;
+    background: rgba(27, 59, 47, 0.92);
+  }
+  header.is-super-compact .profile-pic,
+  header.is-super-compact .header-text h1,
+  header.is-super-compact .header-text .tagline,
+  header.is-super-compact .resume-btn {
+    display: none !important;
+  }
+  header.is-super-compact .hamburger {
+    display: flex !important;
+  }
 }
 
 /* Mobile nav overlay */
@@ -162,8 +164,7 @@ body {
 /* Header */
 
 header {
-  position: sticky !important;
-  top: 0;
+  /* Removed sticky positioning so header scrolls away */
   background: linear-gradient(135deg, rgba(27, 59, 47, 0.85), rgba(27, 59, 47, 0.85)), url('./bioinfo-background.webp');
   background-size: cover;
   background-position: center;

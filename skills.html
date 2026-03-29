@@ -59,27 +59,16 @@
     </section>
 
   </main>
-
-  <!-- Back to Top -->
   <button id="back-to-top">⬆️</button>
-
-  <!-- JS -->
   <script>
+    // Highlight current nav link
     const currentPath = window.location.pathname.split('/').pop() || 'index.html';
     document.querySelectorAll('nav a').forEach(link => {
       const href = link.getAttribute('href');
-      if (!href || href.startsWith('http') || href.startsWith('mailto:') || href.startsWith('#')) {
-        return;
-      }
-      if (href === currentPath) {
-        link.classList.add('is-active');
-      }
+      if (!href || href.startsWith('http') || href.startsWith('mailto:') || href.startsWith('#')) return;
+      if (href === currentPath) link.classList.add('is-active');
     });
-
-    const hamburger = document.querySelector('.hamburger');
-    const mainNav = document.getElementById('main-nav');
-    let menuOpen = false;
-
+    // Fade-in animation
     const faders = document.querySelectorAll('.fade-in');
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
@@ -89,31 +78,12 @@
         }
       });
     }, { threshold: 0.1 });
-
     faders.forEach(f => observer.observe(f));
-
+    // Back to top button
     const backToTop = document.getElementById('back-to-top');
-
     backToTop.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
   </script>
-    // Hamburger menu toggle only
-    hamburger.addEventListener('click', () => {
-      menuOpen = !menuOpen;
-      hamburger.classList.toggle('active', menuOpen);
-      if (menuOpen) {
-        mainNav.classList.add('mobile-overlay');
-        mainNav.classList.remove('mobile-hidden');
-        hamburger.setAttribute('aria-expanded', 'true');
-      } else {
-        mainNav.classList.remove('mobile-overlay');
-        mainNav.classList.add('mobile-hidden');
-        hamburger.setAttribute('aria-expanded', 'false');
-      }
-    });
-
   <footer>
     <p>© 2026 Warren Buenarte. All rights reserved.</p>
   </footer>
-
 </body>
-</html>

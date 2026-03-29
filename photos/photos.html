@@ -63,7 +63,7 @@
   <button id="back-to-top">⬆️</button>
   <script>
     // Highlight current nav link
-    const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+    const currentPath = window.location.pathname.split('/').pop() || 'photos.html';
     document.querySelectorAll('nav a').forEach(link => {
       const href = link.getAttribute('href');
       if (!href || href.startsWith('http') || href.startsWith('mailto:') || href.startsWith('#')) return;
@@ -72,8 +72,7 @@
         link.classList.add('is-active');
       }
     });
-
-    // Fade-in animation for .fade-in elements
+    // Fade-in animation
     const faders = document.querySelectorAll('.fade-in');
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
@@ -84,10 +83,11 @@
       });
     }, { threshold: 0.1 });
     faders.forEach(f => observer.observe(f));
-
     // Back to top button
     const backToTop = document.getElementById('back-to-top');
     backToTop.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
   </script>
+  <footer>
+    <p>© 2026 Warren Buenarte. All rights reserved.</p>
+  </footer>
 </body>
-</html>

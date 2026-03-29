@@ -54,7 +54,7 @@
       if (!href || href.startsWith('http') || href.startsWith('mailto:') || href.startsWith('#')) return;
       if (href === currentPath) link.classList.add('is-active');
     });
-    // Fade-in animation for .fade-in elements
+    // Fade-in animation
     const faders = document.querySelectorAll('.fade-in');
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
@@ -69,5 +69,7 @@
     const backToTop = document.getElementById('back-to-top');
     backToTop.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
   </script>
+  <footer>
+    <p>© 2026 Warren Buenarte. All rights reserved.</p>
+  </footer>
 </body>
-</html>

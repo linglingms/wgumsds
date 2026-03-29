@@ -174,32 +174,23 @@
     </section>
 
   </main>
-
-  <!-- Back to Top -->
   <button id="back-to-top">⬆️</button>
-
-  <!-- JS -->
   <script>
+    // Highlight current nav link
     const currentPath = window.location.pathname.split('/').pop() || 'index.html';
     document.querySelectorAll('nav a').forEach(link => {
       const href = link.getAttribute('href');
-      if (!href || href.startsWith('http') || href.startsWith('mailto:') || href.startsWith('#')) {
-        return;
-      }
-      if (href === currentPath) {
-        link.classList.add('is-active');
-      }
+      if (!href || href.startsWith('http') || href.startsWith('mailto:') || href.startsWith('#')) return;
+      if (href === currentPath) link.classList.add('is-active');
     });
-
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
+    // Back to top button
+    const backToTop = document.getElementById('back-to-top');
     backToTop.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
   </script>
-
   <footer>
     <p>© 2026 Warren Buenarte. All rights reserved.</p>
   </footer>
+</body>
 
 </body>
 </html>

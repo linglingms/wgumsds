@@ -14,7 +14,7 @@ body {
   color: var(--fg);
   line-height: 1.7;
 }
-/* Header styles */
+
 header {
   background: linear-gradient(135deg, rgba(27, 59, 47, 0.85), rgba(27, 59, 47, 0.85)), url('./bioinfo-background.webp');
   background-size: cover;

@@ -21,14 +21,13 @@ header {
   background-position: center;
   z-index: 1000;
   border-bottom: 1px solid #000;
-  padding: 0.45rem 1.2rem;
-  min-height: 64px;
+  padding: 0.25rem 2.2rem;
+  min-height: 62px;
   display: flex;
   align-items: center;
   justify-content: center;
   backdrop-filter: blur(4px);
   transition: padding 0.25s ease, background-color 0.25s ease;
-}
 }
 /* Hamburger menu styles */
 .hamburger {

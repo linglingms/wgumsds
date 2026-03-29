@@ -226,16 +226,36 @@ header {
 }
 
 .profile-pic {
-  width: 54px;
-  height: 54px;
-  border-radius: 50%;
-    object-fit: cover;
-    object-position: center 40%;
-    border: 2.5px solid var(--accent);
-    margin-bottom: 0;
-    margin-right: 1.2rem;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.13);
-    transition: width 0.25s, height 0.25s, margin-bottom 0.25s, border-radius 0.25s;
+  width: 92px;
+  height: 68px;
+  border-radius: 18px;
+  object-fit: cover;
+  object-position: center 40%;
+  border: 2.5px solid var(--accent);
+  margin-bottom: 0;
+  margin-right: 1.2rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.13);
+  transition: width 0.25s, height 0.25s, margin-bottom 0.25s, border-radius 0.25s;
+}
+/* Social icon styles */
+.nav-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.6em;
+  height: 1.6em;
+  vertical-align: middle;
+  margin-right: 0.1em;
+  margin-left: 0.1em;
+  color: var(--accent);
+  transition: color 0.2s;
+}
+.nav-icon:hover {
+  color: #0077b5; /* LinkedIn blue */
+}
+.nav-icon.github:hover {
+  color: #333;
+}
 }
 
 .header-text {

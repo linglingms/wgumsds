@@ -27,6 +27,7 @@
         <a href="contact.html">Contact</a>
   </main>
   <button id="back-to-top">⬆️</button>
+  <!-- JS: Only one script block for all logic -->
   <script>
     // Highlight current nav link
     const currentPath = window.location.pathname.split('/').pop() || 'index.html';
@@ -35,34 +36,23 @@
       if (!href || href.startsWith('http') || href.startsWith('mailto:') || href.startsWith('#')) return;
       if (href === currentPath) link.classList.add('is-active');
     });
+    // Fade-in animation
+    const faders = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    faders.forEach(f => observer.observe(f));
     // Back to top button
     const backToTop = document.getElementById('back-to-top');
     backToTop.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
   </script>
   <footer>
     <p>© 2026 Warren Buenarte. All rights reserved.</p>
-  </footer>
-</body>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Course Projects -->
-      <h3 class="project-category">📚 Course Projects</h3>
-      <div class="project-list">
-        <div class="project-card fade-in">
-          <div class="project-card-content">
-            <div class="project-info">
-              <h4>D603 Clustering Techniques</h4>
-              <p>Clustering using k-means in Streamlit.</p>
-            </div>
-            <div class="project-link">
-              <a href="https://wgumsds-clusteringtechniques.streamlit.app/?embed_options=light_theme,show_toolbar,show_colored_line,dark_theme,show_footer,show_padding" target="_blank">📂 View App Link</a>
-            </div>
-          </div>
-        </div>
-        <div class="project-card fade-in">
           <div class="project-card-content">
             <div class="project-info">
               <h4>D603 Time Series Modeling</h4>
@@ -141,26 +131,10 @@
   <!-- Back to Top -->
   <button id="back-to-top">⬆️</button>
 
-  <!-- JS -->
-  <script>
-    const currentPath = window.location.pathname.split('/').pop() || 'index.html';
-    document.querySelectorAll('nav a').forEach(link => {
-      const href = link.getAttribute('href');
-      if (!href || href.startsWith('http') || href.startsWith('mailto:') || href.startsWith('#')) {
-        return;
-      }
-      if (href === currentPath) {
-        link.classList.add('is-active');
-      }
-    });
-
-    backToTop.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
-  </script>
+  <footer>
+    <p>© 2026 Warren Buenarte. All rights reserved.</p>
+  </footer>
 </body>
 </html>
-
-<footer>
-  <p>© 2026 Warren Buenarte. All rights reserved.</p>
-</footer>
 
 

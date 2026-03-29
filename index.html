@@ -14,14 +14,10 @@
   <header>
     <div class="header-container container">
       <img src="IMG_1347.jpeg" alt="Warren Buenarte" class="profile-pic">
-
       <div class="header-text">
         <h1>Warren Buenarte</h1>
         <p class="tagline">Data Scientist | Biotechology, Machine Learning & AI Enthusiast | University of Washington</p>
       </div>
-      <button class="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="main-nav">
-        <span></span><span></span><span></span>
-      </button>
       <nav id="main-nav">
         <a href="index.html">About</a>
         <a href="projects.html">Projects</a>
@@ -123,32 +119,6 @@
       if (href === currentPath) link.classList.add('is-active');
     });
 
-    // Hamburger menu toggle
-    const hamburger = document.querySelector('.hamburger');
-    const mainNav = document.getElementById('main-nav');
-    let menuOpen = false;
-    hamburger.addEventListener('click', () => {
-      menuOpen = !menuOpen;
-      hamburger.classList.toggle('active', menuOpen);
-      if (menuOpen) {
-        mainNav.classList.add('mobile-overlay');
-        mainNav.classList.remove('mobile-hidden');
-        hamburger.setAttribute('aria-expanded', 'true');
-      } else {
-        mainNav.classList.remove('mobile-overlay');
-        mainNav.classList.add('mobile-hidden');
-        hamburger.setAttribute('aria-expanded', 'false');
-      }
-    });
-    // Hide menu on nav click (for single-page feel)
-    mainNav.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        if (window.innerWidth <= 700 && menuOpen) {
-          hamburger.click();
-        }
-      });
-    });
-
     // Image slider logic
     const slides = document.querySelectorAll('.slide');
     const dots = document.querySelectorAll('.slider-dots .dot');
@@ -174,22 +144,6 @@
       dot.addEventListener('click', () => showSlide(i));
     });
     showSlide(0);
-
-    // Hide menu on resize
-    window.addEventListener('resize', () => {
-      if (window.innerWidth > 700) {
-        menuOpen = false;
-        if (mainNav) {
-          mainNav.classList.remove('mobile-overlay');
-          mainNav.classList.remove('mobile-hidden');
-        }
-        if (hamburger) hamburger.classList.remove('active');
-      } else {
-        if (!menuOpen && mainNav) {
-          mainNav.classList.add('mobile-hidden');
-        }
-      }
-    });
 
     // Back to top button
     const backToTop = document.getElementById('back-to-top');

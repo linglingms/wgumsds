@@ -1,3 +1,39 @@
+/* Timeline Entry Styles */
+.timeline-entry {
+  position: relative;
+  margin-bottom: 2.5rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  background: #164731;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px var(--card-shadow);
+  padding: 1.2rem 1.5rem;
+  border-left: 6px solid var(--accent);
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.timeline-entry:last-child {
+  margin-bottom: 0;
+}
+.timeline-entry:hover {
+  transform: translateY(-2px) scale(1.01);
+  box-shadow: 0 6px 24px var(--card-shadow);
+}
+@media (max-width: 700px) {
+  .timeline {
+    padding-left: 1.1rem;
+    border-left-width: 2.5px;
+  }
+  .timeline-entry {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.7rem;
+    padding: 1rem 0.7rem;
+  }
+  .timeline-content {
+    padding: 0.7rem 0.7rem;
+  }
+}
 /* Background styles */
 .lab-bg {
   display: none; /* This class is no longer needed */

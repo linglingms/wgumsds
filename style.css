@@ -62,17 +62,18 @@ header {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-    gap: 1.1rem;
+  gap: 1.1rem;
   flex-wrap: nowrap;
   justify-content: space-between;
   text-align: left;
+  flex-direction: row;
 }
 
 /* Larger, rectangular profile picture for header */
 .profile-pic {
-  width: 128px;
-  height: 96px;
-  border-radius: 18px;
+  width: 110px;
+  height: 82px;
+  border-radius: 14px;
   object-fit: cover;
   object-position: center 40%;
   border: 2.5px solid var(--accent);
@@ -105,9 +106,20 @@ header {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  min-width: 180px;
+  min-width: 120px;
+  max-width: 350px;
   flex: 1 1 auto;
-    margin-left: 0;
+  margin-left: 0;
+  word-break: break-word;
+/* Interests List Styling */
+.interests-list {
+  margin: 0;
+  padding: 0 0 0 1.2rem;
+  list-style: disc inside;
+  font-size: 1.1rem;
+  color: var(--fg);
+  line-height: 2;
+}
 }
 
 .header-text h1 {

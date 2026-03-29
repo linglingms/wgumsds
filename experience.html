@@ -199,40 +199,6 @@
         link.classList.add('is-active');
       }
     });
-    const pageHeader = document.querySelector('header');
-    const compactThreshold = 48;
-    const superCompactThreshold = 120;
-    const hamburger = document.querySelector('.hamburger');
-    const mainNav = document.getElementById('main-nav');
-    let menuOpen = false;
-    const faders = document.querySelectorAll('.fade-in');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1 });
-    faders.forEach(f => observer.observe(f));
-    const backToTop = document.getElementById('back-to-top');
-    // Hamburger menu toggle only
-    const hamburger = document.querySelector('.hamburger');
-    const mainNav = document.getElementById('main-nav');
-    let menuOpen = false;
-    hamburger.addEventListener('click', () => {
-      menuOpen = !menuOpen;
-      hamburger.classList.toggle('active', menuOpen);
-      if (menuOpen) {
-        mainNav.classList.add('mobile-overlay');
-        mainNav.classList.remove('mobile-hidden');
-        hamburger.setAttribute('aria-expanded', 'true');
-      } else {
-        mainNav.classList.remove('mobile-overlay');
-        mainNav.classList.add('mobile-hidden');
-        hamburger.setAttribute('aria-expanded', 'false');
-      }
-    });
     backToTop.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
   </script>
   <footer>

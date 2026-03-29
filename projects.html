@@ -163,23 +163,6 @@
       }
     });
 
-    // Hamburger menu toggle only (declare once, at the top)
-    const hamburger = document.querySelector('.hamburger');
-    const mainNav = document.getElementById('main-nav');
-    let menuOpen = false;
-    hamburger.addEventListener('click', () => {
-      menuOpen = !menuOpen;
-      hamburger.classList.toggle('active', menuOpen);
-      if (menuOpen) {
-        mainNav.classList.add('mobile-overlay');
-        mainNav.classList.remove('mobile-hidden');
-        hamburger.setAttribute('aria-expanded', 'true');
-      } else {
-        mainNav.classList.remove('mobile-overlay');
-        mainNav.classList.add('mobile-hidden');
-        hamburger.setAttribute('aria-expanded', 'false');
-      }
-    });
     backToTop.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
   </script>
 </body>

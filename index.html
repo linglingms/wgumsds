@@ -115,24 +115,18 @@
 
   <!-- JS -->
   <script>
+    // Highlight current nav link
     const currentPath = window.location.pathname.split('/').pop() || 'index.html';
     document.querySelectorAll('nav a').forEach(link => {
       const href = link.getAttribute('href');
-      if (!href || href.startsWith('http') || href.startsWith('mailto:') || href.startsWith('#')) {
-        return;
-      }
-      if (href === currentPath) {
-        link.classList.add('is-active');
-      }
+      if (!href || href.startsWith('http') || href.startsWith('mailto:') || href.startsWith('#')) return;
+      if (href === currentPath) link.classList.add('is-active');
     });
 
-    const pageHeader = document.querySelector('header');
-    const compactThreshold = 48;
-    const superCompactThreshold = 120;
-    const mainNav = document.getElementById('main-nav');
+    // Hamburger menu toggle
     const hamburger = document.querySelector('.hamburger');
+    const mainNav = document.getElementById('main-nav');
     let menuOpen = false;
-    // Hamburger menu toggle only
     hamburger.addEventListener('click', () => {
       menuOpen = !menuOpen;
       hamburger.classList.toggle('active', menuOpen);
@@ -146,6 +140,21 @@
         hamburger.setAttribute('aria-expanded', 'false');
       }
     });
+    // Hide menu on nav click (for single-page feel)
+    mainNav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth <= 700 && menuOpen) {
+          hamburger.click();
+        }
+      });
+    });
+
+    // Image slider logic
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.slider-dots .dot');
+    let currentSlide = 0;
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
         slide.classList.toggle('active', i === index);
       });
       dots.forEach((dot, i) => {
@@ -153,7 +162,6 @@
       });
       currentSlide = index;
     }
-
     document.getElementById('prev-slide').addEventListener('click', () => {
       let newIndex = (currentSlide - 1 + slides.length) % slides.length;
       showSlide(newIndex);
@@ -166,28 +174,6 @@
       dot.addEventListener('click', () => showSlide(i));
     });
     showSlide(0);
-        menuOpen = !menuOpen;
-        hamburger.classList.toggle('active', menuOpen);
-        if (menuOpen) {
-          mainNav.classList.add('mobile-overlay');
-          mainNav.classList.remove('mobile-hidden');
-          pageHeader.classList.remove('is-super-compact');
-          hamburger.setAttribute('aria-expanded', 'true');
-        } else {
-          mainNav.classList.remove('mobile-overlay');
-          mainNav.classList.add('mobile-hidden');
-          hamburger.setAttribute('aria-expanded', 'false');
-        }
-      });
-      // Hide menu on nav click (for single-page feel)
-      mainNav.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-          if (window.innerWidth <= 700 && menuOpen) {
-            hamburger.click();
-          }
-        });
-      });
-    }
 
     // Hide menu on resize
     window.addEventListener('resize', () => {
@@ -203,11 +189,10 @@
           mainNav.classList.add('mobile-hidden');
         }
       }
-      handleScroll();
     });
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
+    // Back to top button
+    const backToTop = document.getElementById('back-to-top');
     backToTop.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
   </script>
 

@@ -29,7 +29,7 @@
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
-  background: linear-gradient(rgba(10,20,20,0.72), rgba(10,20,20,0.72)), url('starry_sky_custom_bg.jpg') center top/cover no-repeat fixed;
+  background: url('IMG_2798.jpeg') no-repeat center center fixed;
   color: var(--fg);
   line-height: 1.7;
   min-height: 100vh;

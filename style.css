@@ -330,26 +330,39 @@ h2 {
 }
 
 /* Skills Grid */
+
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   gap: 1.5rem;
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: auto;
+  background: #164731;
+  border-radius: 14px;
+  padding: 1rem 0.5rem;
 }
 
+
 .skill {
-  background: #164731; /* dark green */
-  padding: 1rem 1.2rem;
+  background: #164731 !important;
+  padding: 1.2rem 1.5rem;
   border-radius: 14px;
   text-align: center;
-  font-weight: 500;
-  color: var(--fg);
-  box-shadow: 0 2px 6px var(--card-shadow);
-  transition: transform 0.2s, box-shadow 0.2s;
+  font-weight: 600;
+  color: #e0e0e0 !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+  margin: 0.2rem 0;
+  font-size: 1.1rem;
+  min-width: 120px;
+  word-break: break-word;
+  transition: transform 0.18s, box-shadow 0.18s, background 0.18s;
 }
 
 .skill:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 12px var(--card-shadow);
+  transform: translateY(-4px) scale(1.04);
+  box-shadow: 0 8px 24px #0002;
+  background: #1b3b2f !important;
 }
 
 /* Education & Experience */

@@ -163,9 +163,20 @@ nav#main-nav {
   color: #333;
 }
 
-.header-text {
-  /* removed duplicate/conflicting block */
 
+/* FIXED: properly closed block */
+.header-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 200px;
+  max-width: 520px;
+  word-break: break-word;
+  align-items: flex-start;
+  margin: 0;
+}
+
+/* This now works correctly */
 .header-text h1 {
   margin: 0;
   font-size: 1.25rem;

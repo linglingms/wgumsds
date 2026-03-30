@@ -1,48 +1,42 @@
-# WGU Data Science Projects
 
-This repository contains coursework and deployment artifacts from the WGU Master's in Data Science program.
+# Personal Portfolio & Projects
 
-## Active Streamlit Deployment
+Welcome to my personal portfolio repository! This site showcases my background, skills, and a curated selection of projects in data science, machine learning, biotechnology, and more. It is designed as a central hub for my professional profile, academic work, and hands-on technical accomplishments.
 
-The repository is currently configured to deploy the D603 Task 3 time series modeling app.
+## Features
 
-- Streamlit entrypoint: `D603/task3_app.py`
-- Dataset: `D603/d603task3_cleaned_data.csv`
-- Committed notebook forecast: `D603/d603task3_forecast.csv`
-- Documentation assets: `D603/D603 Task 3.docx` and `D603/D603 Task 3 Time Series Modeling.pdf`
+- **About Me:** Learn about my background, education, and interests.
+- **Projects:** Explore a variety of data science, machine learning, and analytics projects, including coursework, capstone work, and independent explorations.
+- **Skills:** Overview of technical proficiencies and tools.
+- **Education & Experience:** Academic credentials and professional experience.
+- **Contact:** Ways to connect or collaborate.
+- **Photo Gallery & Interests:** Glimpse into my extracurricular interests and lab work.
 
-## Repository Highlights
+## Repository Structure
 
-- `D600/`: statistical data mining notebooks and datasets
-- `D602/`: deployment coursework
-- `D603/`: machine learning projects, including the deployed time series app
-- `D604/`: separate Streamlit apps for neural network tasks
-- `D606/`: capstone work
+- `index.html`, `projects.html`, `skills.html`, etc.: Main portfolio site pages
+- `D600/`, `D603/`, etc.: Project and coursework directories (not limited to WGU)
+- `style.css`: Custom site styling
+- `requirements.txt`: Python dependencies for select projects and apps
+- `streamlit_app.py`, `D604/Task1/streamlit_app.py`, etc.: Interactive app entrypoints
 
 ## Local Setup
 
-Recommended Python version: `3.11`
+To view or run interactive apps locally:
 
-Install the deployment dependencies from the repository root:
+1. Install Python 3.11 or newer (recommended)
+2. Install dependencies:
+	```bash
+	pip install -r requirements.txt
+	```
+3. Launch any Streamlit app, for example:
+	```bash
+	streamlit run D603/task3_app.py
+	```
 
-```bash
-pip install -r requirements.txt
-```
+The HTML/CSS portfolio pages can be opened directly in your browser.
 
-Run the D603 Streamlit app:
+---
 
-```bash
-streamlit run D603/task3_app.py
-```
-
-## Streamlit Cloud
-
-Use these settings when creating or updating the Streamlit Cloud app:
-
-- Repository: this repository
-- Branch: `main`
-- Main file path: `D603/task3_app.py`
-- Python version: `3.11`
-
-The root `requirements.txt` and `runtime.txt` are aligned to that deployment target.
+This repository is a living record of my growth and interests as a data scientist and technologist. For more details, visit the site or reach out via the contact page!
 

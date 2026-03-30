@@ -331,6 +331,7 @@ h2 {
 
 /* Skills Grid */
 
+
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
@@ -338,10 +339,12 @@ h2 {
   width: 100%;
   box-sizing: border-box;
   overflow-x: auto;
-  background: #164731;
+  background: #164731 !important;
   border-radius: 14px;
   padding: 1rem 0.5rem;
+  border: 3px solid #ff00cc !important; /* DEBUG: bright border to ensure visibility */
 }
+
 
 
 .skill {
@@ -357,6 +360,8 @@ h2 {
   min-width: 120px;
   word-break: break-word;
   transition: transform 0.18s, box-shadow 0.18s, background 0.18s;
+  border: 2px solid #00ffcc !important; /* DEBUG: bright border to ensure visibility */
+  outline: 2px dashed #fff700 !important; /* DEBUG: visible outline */
 }
 
 .skill:hover {

@@ -57,62 +57,89 @@ header {
   right: 0;
   position: relative;
   background: linear-gradient(135deg, rgba(23, 36, 71, 0.82), rgba(27, 59, 47, 0.82)), url('dna_code_bg.jpg');
-  background-size: cover;
-  background-position: center;
-  background-size: cover;
-  background-position: center;
-  z-index: 1000;
-  border-bottom: 0;
-  padding: 0.25rem 0 0 0;
-  min-height: 62px;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  justify-content: flex-start;
-  box-sizing: border-box;
-}
-
-/* Push profile and name/title to the right in header, but not nav */
-.header-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  header {
+    width: 100%;
+    left: 0;
+    right: 0;
+    position: relative;
+    background: linear-gradient(135deg, rgba(23, 36, 71, 0.82), rgba(27, 59, 47, 0.82)), url('dna_code_bg.jpg');
+    background-size: cover;
+    background-position: center;
+    z-index: 1000;
+    border-bottom: 0;
+    padding: 0.25rem 0 0 0;
+    min-height: 90px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+  }
   gap: 3.2rem;
-  position: relative;
-}
-
-nav#main-nav {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex: 1 1 auto;
+  /* Header container: left (profile/text), center (nav) */
+  .header-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    gap: 2.5rem;
+    position: relative;
+    padding: 0.7rem 2.5rem 0.7rem 2.5rem;
+    box-sizing: border-box;
+  }
   gap: 1.2rem;
+  /* Group profile and text on left */
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
   position: absolute;
+  .profile-pic {
+    width: 90px;
+    height: 90px;
+    border-radius: 16px;
+    object-fit: cover;
+    object-position: center 40%;
+    border: 2.5px solid var(--accent);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.13);
+    margin: 0;
+    display: block;
+  }
   left: 50%;
+  .header-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 220px;
+    max-width: 500px;
+    word-break: break-word;
+    align-items: flex-start;
+    margin: 0;
+  }
   transform: translateX(-50%);
+  nav#main-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.2rem;
+    flex: 1 1 auto;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+  }
   z-index: 2;
-}
-.header-container .profile-pic {
-  margin-left: 4.5rem;
-  max-width: 120px;
-  height: auto;
-  border-radius: 18px;
-  object-fit: cover;
-  z-index: 3;
-}
-.header-container .header-text {
-  margin-left: 2.5rem;
-  z-index: 3;
-}
-.header-container nav {
-  margin-left: 0;
 }
 
 /* Green accent bar below header */
 .header-accent-bar {
   width: 100vw;
   height: 7px;
-  background: linear-gradient(90deg, var(--accent) 60%, #a88fcf 100%);
+  background: linear-gradient(90deg, var(--accent) 60%, #6306fa 100%);
   margin: 0;
   border: none;
   box-shadow: 0 2px 8px var(--card-shadow);
@@ -476,7 +503,7 @@ h2 {
 
 
 .project-card {
-  background: #164731;
+  background: #007bff5c;
   padding: 1.5rem 1.2rem;
   border-radius: 16px;
   color: var(--fg);

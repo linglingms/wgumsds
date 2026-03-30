@@ -33,40 +33,7 @@
       </div>
     </div>
   </header>
-  <script>
-    // Hamburger menu toggle
-    const hamburger = document.getElementById('hamburger-btn');
-    const nav = document.getElementById('main-nav');
-    hamburger.addEventListener('click', () => {
-      nav.classList.toggle('active');
-    });
-    // Highlight current nav link
-    const currentPath = window.location.pathname.split('/').pop() || 'index.html';
-    document.querySelectorAll('nav a').forEach(link => {
-      const href = link.getAttribute('href');
-      if (!href || href.startsWith('http') || href.startsWith('mailto:') || href.startsWith('#')) return;
-      if (href === currentPath) link.classList.add('is-active');
-    });
-    // Fade-in animation on scroll (normal behavior)
-    const faders = document.querySelectorAll('.fade-in');
-    if ('IntersectionObserver' in window) {
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.1 });
-      faders.forEach(f => observer.observe(f));
-    } else {
-      // Fallback: show all fade-in elements immediately
-      faders.forEach(f => f.classList.add('visible'));
-    }
-    // Back to top button
-    const backToTop = document.getElementById('back-to-top');
-    backToTop.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
-  </script>
+  <!-- Removed duplicate script block to prevent variable redeclaration errors -->
 
   <main class="container">
 
@@ -214,6 +181,14 @@
   </main>
   <button id="back-to-top">⬆️</button>
   <script>
+    // Hamburger menu toggle
+    const hamburger = document.getElementById('hamburger-btn');
+    const nav = document.getElementById('main-nav');
+    if (hamburger && nav) {
+      hamburger.addEventListener('click', () => {
+        nav.classList.toggle('active');
+      });
+    }
     // Highlight current nav link
     const currentPath = window.location.pathname.split('/').pop() || 'index.html';
     document.querySelectorAll('nav a').forEach(link => {
@@ -221,7 +196,6 @@
       if (!href || href.startsWith('http') || href.startsWith('mailto:') || href.startsWith('#')) return;
       if (href === currentPath) link.classList.add('is-active');
     });
-
     // Fade-in animation on scroll (normal behavior)
     const faders = document.querySelectorAll('.fade-in');
     if ('IntersectionObserver' in window) {
@@ -238,10 +212,11 @@
       // Fallback: show all fade-in elements immediately
       faders.forEach(f => f.classList.add('visible'));
     }
-
     // Back to top button
     const backToTop = document.getElementById('back-to-top');
-    backToTop.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (backToTop) {
+      backToTop.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   </script>
   <footer>
     <p>© 2026 Warren Buenarte. All rights reserved.</p>

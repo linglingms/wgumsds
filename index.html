@@ -106,9 +106,11 @@
     // Hamburger menu toggle
     const hamburger = document.getElementById('hamburger-btn');
     const nav = document.getElementById('main-nav');
-    hamburger.addEventListener('click', () => {
-      nav.classList.toggle('active');
-    });
+    if (hamburger && nav) {
+      hamburger.addEventListener('click', () => {
+        nav.classList.toggle('active');
+      });
+    }
     // Highlight current nav link
     const currentPath = window.location.pathname.split('/').pop() || 'index.html';
     document.querySelectorAll('nav a').forEach(link => {
@@ -134,28 +136,10 @@
     }
     // Back to top button
     const backToTop = document.getElementById('back-to-top');
-    backToTop.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
-  </script>
-      let newIndex = (currentSlide + 1) % slides.length;
-      showSlide(newIndex);
-    });
-    dots.forEach((dot, i) => {
-      dot.addEventListener('click', () => showSlide(i));
-    });
-    showSlide(0);
-
-
-    // Fade-in animation on scroll (normal behavior)
-    const faders = document.querySelectorAll('.fade-in');
-    if ('IntersectionObserver' in window) {
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.1 });
+    if (backToTop) {
+      backToTop.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  <!-- Only one header should exist, already present at the top of the file. Removed duplicate header. -->
       faders.forEach(f => observer.observe(f));
     } else {
       // Fallback: show all fade-in elements immediately

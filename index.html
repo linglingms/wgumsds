@@ -140,32 +140,22 @@
     showSlide(0);
 
 
-    // Fade-in animation only after button click
+    // Fade-in animation on scroll (normal behavior)
     const faders = document.querySelectorAll('.fade-in');
-    const showBtn = document.getElementById('show-content-btn');
-    let fadeReady = false;
-    function activateFadeIn() {
-      if (fadeReady) return;
-      fadeReady = true;
-      if ('IntersectionObserver' in window) {
-        const observer = new IntersectionObserver(entries => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('visible');
-              observer.unobserve(entry.target);
-            }
-          });
-        }, { threshold: 0.1 });
-        faders.forEach(f => observer.observe(f));
-      } else {
-        // Fallback: show all fade-in elements immediately
-        faders.forEach(f => f.classList.add('visible'));
-      }
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      faders.forEach(f => observer.observe(f));
+    } else {
+      // Fallback: show all fade-in elements immediately
+      faders.forEach(f => f.classList.add('visible'));
     }
-    showBtn.addEventListener('click', () => {
-      activateFadeIn();
-      showBtn.style.display = 'none';
-    });
 
     // Back to top button
     const backToTop = document.getElementById('back-to-top');

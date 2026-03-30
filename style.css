@@ -299,13 +299,23 @@ nav a:focus-visible::after {
 
 /* Sections */
 .section {
-  padding: 3rem 2.5rem;
+  padding: 2.5rem 2rem;
   background: var(--section-bg);
   color: var(--fg);
   border-radius: 16px;
   margin-bottom: 2.5rem;
   box-shadow: 0 4px 24px var(--card-shadow), 0 0 0 2px #1b3b2f;
   transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.info-box {
+  background: var(--section-bg);
+  color: var(--fg);
+  border-radius: 16px;
+  box-shadow: 0 2px 10px var(--card-shadow);
+  padding: 2rem 1.5rem;
+  margin: 2rem 0;
+  transition: box-shadow 0.2s, transform 0.2s;
 }
 
 .section:hover {

@@ -35,6 +35,7 @@
   </header>
 
   <main class="container">
+  <button id="show-content-btn" style="margin: 2rem auto 1rem auto; display: block; padding: 0.7rem 2.2rem; font-size: 1.1rem; border-radius: 8px; background: linear-gradient(90deg, #8fc1a9 60%, #a88fcf 100%); color: #fff; border: none; font-weight: 600; cursor: pointer;">Show Content</button>
 
     <!-- About Section -->
     <div id="about" class="section fade-in info-box">
@@ -140,23 +141,32 @@
     showSlide(0);
 
 
-    // Fade-in animation for all .fade-in elements
+    // Fade-in animation only after button click
     const faders = document.querySelectorAll('.fade-in');
-
-    if ('IntersectionObserver' in window) {
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.1 });
-      faders.forEach(f => observer.observe(f));
-    } else {
-      // Fallback: show all fade-in elements immediately
-      faders.forEach(f => f.classList.add('visible'));
+    const showBtn = document.getElementById('show-content-btn');
+    let fadeReady = false;
+    function activateFadeIn() {
+      if (fadeReady) return;
+      fadeReady = true;
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.1 });
+        faders.forEach(f => observer.observe(f));
+      } else {
+        // Fallback: show all fade-in elements immediately
+        faders.forEach(f => f.classList.add('visible'));
+      }
     }
+    showBtn.addEventListener('click', () => {
+      activateFadeIn();
+      showBtn.style.display = 'none';
+    });
 
     // Back to top button
     const backToTop = document.getElementById('back-to-top');

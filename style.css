@@ -49,8 +49,8 @@ html {
   box-sizing: border-box;
 }
 
-/* Header */
 
+/* Header */
 header {
   width: 100%;
   left: 0;
@@ -68,6 +68,21 @@ header {
   align-items: stretch;
   justify-content: flex-start;
   box-sizing: border-box;
+}
+
+/* Push profile and name/title to the right in header, but not nav */
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 2.2rem;
+}
+.header-container .profile-pic,
+.header-container .header-text {
+  margin-left: 2.5rem;
+}
+.header-container nav {
+  margin-left: 0;
 }
 
 /* Green accent bar below header */

@@ -84,14 +84,14 @@ header {
   display: flex;
   align-items: flex-start;
   width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  gap: 1.5rem;
+  max-width: 1400px;
+  margin: 0 0 0 auto;
+  gap: 2.2rem;
   flex-wrap: nowrap;
-  justify-content: flex-start;
+  justify-content: flex-end;
   text-align: left;
   flex-direction: row;
-  padding: 0.7rem 1.5rem 0.7rem 1.5rem;
+  padding: 0.7rem 2.5rem 0.7rem 2.5rem;
   box-sizing: border-box;
 }
 
@@ -196,8 +196,8 @@ nav {
   display: flex;
   align-items: center;
   gap: 0.7rem;
-  justify-content: center;
-  margin: 0 auto;
+  justify-content: flex-start;
+  margin: 0;
 }
 
 nav a {
@@ -260,7 +260,7 @@ nav a:focus-visible::after {
   border-radius: 999px;
   border: none;
   background: linear-gradient(90deg, var(--accent) 60%, #a88fcf 100%);
-  color: var(--bg);
+  color: #fff !important;
   font-weight: 600;
   font-size: 1rem;
   letter-spacing: 0.02em;
@@ -272,6 +272,7 @@ nav a:focus-visible::after {
   position: relative;
   overflow: hidden;
   margin-left: 0.7rem;
+  text-decoration: none !important;
 }
 .resume-btn:focus-visible {
   box-shadow: 0 0 0 3px #8fc1a9cc, 0 2px 8px rgba(143,193,169,0.10);

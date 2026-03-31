@@ -70,12 +70,14 @@
   </main>
   <button id="back-to-top">⬆️</button>
   <script>
-    // Hamburger menu toggle
+    // Hamburger menu toggle (only if present)
     const hamburger = document.getElementById('hamburger-btn');
     const nav = document.getElementById('main-nav');
-    hamburger.addEventListener('click', () => {
-      nav.classList.toggle('active');
-    });
+    if (hamburger) {
+      hamburger.addEventListener('click', () => {
+        nav.classList.toggle('active');
+      });
+    }
     // Highlight current nav link
     const currentPath = window.location.pathname.split('/').pop() || 'index.html';
     document.querySelectorAll('nav a').forEach(link => {

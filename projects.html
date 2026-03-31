@@ -125,9 +125,13 @@ document.getElementById("back-to-top").onclick = () =>
   window.scrollTo({ top: 0, behavior: "smooth" });
 
 // Mobile menu
-document.getElementById("hamburger-btn").onclick = () => {
-  document.getElementById("main-nav").classList.toggle("show");
-};
+const hamburger = document.getElementById("hamburger-btn");
+const nav = document.getElementById("main-nav");
+if (hamburger && nav) {
+  hamburger.onclick = () => {
+    nav.classList.toggle("show");
+  };
+}
 
 </script>
 

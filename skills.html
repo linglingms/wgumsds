@@ -101,6 +101,12 @@
       // Fallback: show all fade-in elements immediately
       faders.forEach(f => f.classList.add('visible'));
     }
+    // Always show skills if fade-in fails for any reason
+    setTimeout(() => {
+      document.querySelectorAll('.fade-in').forEach(f => {
+        if (!f.classList.contains('visible')) f.classList.add('visible');
+      });
+    }, 800);
     // Back to top button
     const backToTop = document.getElementById('back-to-top');
     backToTop.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });

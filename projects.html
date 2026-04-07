@@ -42,42 +42,54 @@
 </header>
 
 <!-- Main -->
-<main>
+<main class="container">
 
-  <section>
+  <section id="projects" class="section fade-in info-box">
 
-    <h3 class="project-category">💻 Projects</h3>
+    <h2>💻 Projects</h2>
 
     <div class="project-list">
 
       <div class="project-card fade-in">
-        <h4>D604 Task 2 Sentiment Analysis App</h4>
-        <p>Sentiment analysis app (Task 2).</p>
-        <a href="https://github.com/linglingms/wgumsds/blob/main/D604/Task2/task2_app.py" target="_blank">
-          📂 View App
-        </a>
+        <div class="project-card-content">
+          <div class="project-info">
+            <h4>D604 Task 2 Sentiment Analysis App</h4>
+            <p>Sentiment analysis app (Task 2).</p>
+          </div>
+          <div class="project-link">
+            <a href="https://github.com/linglingms/wgumsds/blob/main/D604/Task2/task2_app.py" target="_blank">📂 View App</a>
+          </div>
+        </div>
       </div>
 
     </div>
 
-    <h3 class="project-category">🏆 Hackathons</h3>
+    <h2>🏆 Hackathons</h2>
 
     <div class="project-list">
 
       <div class="project-card fade-in">
-        <h4>DubsTech Datathon 2026</h4>
-        <p>Access to Care dataset analysis.</p>
-        <a href="https://datathon2026.streamlit.app/" target="_blank">
-          📂 View App
-        </a>
+        <div class="project-card-content">
+          <div class="project-info">
+            <h4>DubsTech Datathon 2026</h4>
+            <p>Access to Care dataset analysis.</p>
+          </div>
+          <div class="project-link">
+            <a href="https://datathon2026.streamlit.app/" target="_blank">📂 View App</a>
+          </div>
+        </div>
       </div>
 
       <div class="project-card fade-in">
-        <h4>NeuroSignal Interviewer App</h4>
-        <p>Neurohackathon 2026 with OpenBCI.</p>
-        <a href="https://neurrohackathon2026-i19dis4kp-linglingms-projects.vercel.app/" target="_blank">
-          📂 View App
-        </a>
+        <div class="project-card-content">
+          <div class="project-info">
+            <h4>NeuroSignal Interviewer App</h4>
+            <p>Neurohackathon 2026 with OpenBCI.</p>
+          </div>
+          <div class="project-link">
+            <a href="https://neurrohackathon2026-i19dis4kp-linglingms-projects.vercel.app/" target="_blank">📂 View App</a>
+          </div>
+        </div>
       </div>
 
     </div>
@@ -88,63 +100,62 @@
 
 <button id="back-to-top">⬆️</button>
 
+<script>
+  // Hamburger menu toggle (only if present)
+  const hamburger = document.getElementById('hamburger-btn');
+  const nav = document.getElementById('main-nav');
+  if (hamburger) {
+    hamburger.addEventListener('click', () => {
+      nav.classList.toggle('active');
+    });
+  }
+
+  // Highlight current nav link
+  const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+  document.querySelectorAll('nav a').forEach(link => {
+    const href = link.getAttribute('href');
+    if (!href || href.startsWith('http') || href.startsWith('mailto:') || href.startsWith('#')) return;
+    if (href === currentPath) link.classList.add('is-active');
+  });
+
+  // Fade-in animation on scroll (robust fallback)
+  const faders = document.querySelectorAll('.fade-in');
+  if ('IntersectionObserver' in window) {
+    const observer = new window.IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    faders.forEach(f => observer.observe(f));
+  } else {
+    // Fallback: show all fade-in elements immediately
+    faders.forEach(f => f.classList.add('visible'));
+  }
+
+  // Always show skills/projects if fade-in fails for any reason
+  setTimeout(() => {
+    document.querySelectorAll('.fade-in').forEach(f => {
+      if (!f.classList.contains('visible')) f.classList.add('visible');
+    });
+  }, 800);
+
+  // Back to top button
+  const backToTop = document.getElementById('back-to-top');
+  if (backToTop) {
+    backToTop.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
+
 <footer>
-  <p>© 2026 Warren Buenarte</p>
+  <p>© 2026 Warren Buenarte. All rights reserved.</p>
 </footer>
 
 <div class="footer-accent-bar"></div>
 
-<script>
-
-// Active nav highlight
-const current = window.location.pathname.split("/").pop();
-document.querySelectorAll("#main-nav a").forEach(link => {
-  if (link.getAttribute("href") === current) {
-    link.classList.add("active");
-  }
-});
-
-
-    // Highlight current nav link
-    const currentPath = window.location.pathname.split('/').pop() || 'index.html';
-    document.querySelectorAll('nav a').forEach(link => {
-      const href = link.getAttribute('href');
-      if (!href || href.startsWith('http') || href.startsWith('mailto:') || href.startsWith('#')) return;
-      if (href === currentPath) link.classList.add('is-active');
-    });
-    // Fade-in animation on scroll (robust fallback)
-    const faders = document.querySelectorAll('.fade-in');
-    if ('IntersectionObserver' in window) {
-      const observer = new window.IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.1 });
-      faders.forEach(f => observer.observe(f));
-    } else {
-      // Fallback: show all fade-in elements immediately
-      faders.forEach(f => f.classList.add('visible'));
-    }
-    // Always show skills/projects if fade-in fails for any reason
-    setTimeout(() => {
-      document.querySelectorAll('.fade-in').forEach(f => {
-        if (!f.classList.contains('visible')) f.classList.add('visible');
-      });
-    }, 800);
-    // Back to top button
-    const backToTop = document.getElementById('back-to-top');
-    backToTop.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
-    // Hamburger menu toggle (only if present)
-    const hamburger = document.getElementById('hamburger-btn');
-    const nav = document.getElementById('main-nav');
-    if (hamburger) {
-      hamburger.addEventListener('click', () => {
-        nav.classList.toggle('active');
-      });
-    }
-    </script>
+</body>
+</html>
 
 

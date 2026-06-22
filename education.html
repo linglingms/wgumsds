@@ -46,11 +46,11 @@
   <main class="container">
 
     <!-- Education Section -->
-    <section id="education" class="section fade-in">
+    <section id="education" class="section">
       <h2>🎓 Education</h2>
 
       <!-- WGU College Box -->
-      <div class="college-box fade-in">
+      <div class="college-box">
         <div class="college-header">
           <div class="college-info">
             <h3 class="college-name">Western Governors University</h3>
@@ -64,47 +64,47 @@
         <div class="coursework-section">
           <h4 class="coursework-title">📚 Relevant Coursework</h4>
           <div class="coursework-grid">
-            <div class="course-item fade-in">
+            <div class="course-item">
               <span class="course-code">D596</span>
               <span class="course-name">The Data Analytics Journey</span>
             </div>
-            <div class="course-item fade-in">
+            <div class="course-item">
               <span class="course-code">D597</span>
               <span class="course-name">Data Management</span>
             </div>
-            <div class="course-item fade-in">
+            <div class="course-item">
               <span class="course-code">D598</span>
               <span class="course-name">Analytics Programming</span>
             </div>
-            <div class="course-item fade-in">
+            <div class="course-item">
               <span class="course-code">D599</span>
               <span class="course-name">Data Preparation & Exploration</span>
             </div>
-            <div class="course-item fade-in">
+            <div class="course-item">
               <span class="course-code">D600</span>
               <span class="course-name">Statistical Data Mining</span>
             </div>
-            <div class="course-item fade-in">
+            <div class="course-item">
               <span class="course-code">D601</span>
               <span class="course-name">Data Storytelling</span>
             </div>
-            <div class="course-item fade-in">
+            <div class="course-item">
               <span class="course-code">D602</span>
               <span class="course-name">Deployment</span>
             </div>
-            <div class="course-item fade-in">
+            <div class="course-item">
               <span class="course-code">D603</span>
               <span class="course-name">Machine Learning</span>
             </div>
-            <div class="course-item fade-in">
+            <div class="course-item">
               <span class="course-code">D604</span>
               <span class="course-name">Advanced Analytics</span>
             </div>
-            <div class="course-item fade-in">
+            <div class="course-item">
               <span class="course-code">D605</span>
               <span class="course-name">Optimization</span>
             </div>
-            <div class="course-item fade-in">
+            <div class="course-item">
               <span class="course-code">D606</span>
               <span class="course-name">Data Science Capstone</span>
             </div>
@@ -113,7 +113,7 @@
       </div>
 
       <!-- University of Washington College Box -->
-      <div class="college-box fade-in">
+      <div class="college-box">
         <div class="college-header">
           <div class="college-info">
             <h3 class="college-name">University of Washington</h3>
@@ -218,7 +218,7 @@
       </div>
 
       <!-- Highline College Box -->
-      <div class="college-box fade-in">
+      <div class="college-box">
         <div class="college-header">
           <div class="college-info">
             <h3 class="college-name">Highline College</h3>
@@ -300,22 +300,6 @@
       if (!href || href.startsWith('http') || href.startsWith('mailto:') || href.startsWith('#')) return;
       if (href === currentPath) link.classList.add('is-active');
     });
-    // Fade-in animation on scroll (normal behavior)
-    const faders = document.querySelectorAll('.fade-in');
-    if ('IntersectionObserver' in window) {
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.1 });
-      faders.forEach(f => observer.observe(f));
-    } else {
-      // Fallback: show all fade-in elements immediately
-      faders.forEach(f => f.classList.add('visible'));
-    }
     // Quarter box toggle functionality
     const quarterHeaders = document.querySelectorAll('.quarter-header');
     quarterHeaders.forEach(header => {

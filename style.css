@@ -711,5 +711,175 @@ nav a:hover, nav a.is-active {
   }
 }
 
+/* College Boxes */
+.college-box {
+  background: #1b3b2f;
+  border: 1px solid rgba(143, 193, 169, 0.3);
+  border-radius: 14px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+
+.college-box:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3);
+  border-color: rgba(143, 193, 169, 0.5);
+}
+
+.college-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.college-info h3 {
+  color: var(--accent);
+  margin: 0 0 0.8rem 0;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.college-info .degree {
+  color: #b0b0b0;
+  font-size: 1.05rem;
+  margin: 0.3rem 0;
+  font-weight: 600;
+}
+
+.college-info .year {
+  color: #a0a0a0;
+  font-size: 0.95rem;
+  margin: 0.2rem 0;
+}
+
+.college-info .extracurriculars {
+  color: #9a9a9a;
+  font-size: 0.9rem;
+  margin-top: 0.8rem;
+  line-height: 1.5;
+}
+
+.college-image {
+  width: 100%;
+  height: 280px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.college-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.college-box:hover .college-img {
+  transform: scale(1.02);
+}
+
+/* Coursework Section */
+.coursework-section {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(143, 193, 169, 0.2);
+}
+
+.coursework-title {
+  color: var(--accent);
+  margin: 0 0 1.2rem 0;
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+.coursework-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.coursework-grid .course-item {
+  background: linear-gradient(135deg, rgba(75, 130, 100, 0.7), rgba(50, 100, 80, 0.7));
+  border: 1px solid rgba(143, 193, 169, 0.4);
+  padding: 1.2rem;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  text-align: left;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+
+.coursework-grid .course-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(143, 193, 169, 0.2);
+  border-color: rgba(143, 193, 169, 0.6);
+  background: linear-gradient(135deg, rgba(85, 140, 110, 0.8), rgba(60, 110, 90, 0.8));
+}
+
+.course-code {
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.course-name {
+  color: var(--fg);
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .college-content {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .college-image {
+    height: 240px;
+  }
+
+  .college-box {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .college-box {
+    padding: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .college-info h3 {
+    font-size: 1.2rem;
+  }
+
+  .college-image {
+    height: 200px;
+  }
+
+  .coursework-grid {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 0.8rem;
+  }
+
+  .coursework-grid .course-item {
+    padding: 1rem;
+  }
+
+  .course-code {
+    font-size: 0.85rem;
+  }
+
+  .course-name {
+    font-size: 0.85rem;
+  }
+}
+
 
 

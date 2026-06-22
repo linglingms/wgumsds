@@ -45,25 +45,25 @@
   <main class="container">
 
     <!-- Skills Section -->
-    <div id="skills" class="section fade-in info-box">
+    <div id="skills" class="section info-box">
       <h2>🛠️ Skills</h2>
       <div class="skills-grid">
-        <div class="skill fade-in">Python</div>
-        <div class="skill fade-in">Java</div>
-        <div class="skill fade-in">C++</div>
-        <div class="skill fade-in">JavaScript</div>
-        <div class="skill fade-in">R</div>
-        <div class="skill fade-in">Tableau</div>
-        <div class="skill fade-in">PowerBI</div>
-        <div class="skill fade-in">TensorFlow</div>
-        <div class="skill fade-in">PyTorch</div>
-        <div class="skill fade-in">Machine Learning</div>
-        <div class="skill fade-in">Statistical Analysis</div>
-        <div class="skill fade-in">Data Visualization</div>
-        <div class="skill fade-in">SQL</div>
-        <div class="skill fade-in">Deep Learning</div>
-        <div class="skill fade-in">Data Mining</div>
-        <div class="skill fade-in">Bioinformatics</div>
+        <div class="skill">Python</div>
+        <div class="skill">Java</div>
+        <div class="skill">C++</div>
+        <div class="skill">JavaScript</div>
+        <div class="skill">R</div>
+        <div class="skill">Tableau</div>
+        <div class="skill">PowerBI</div>
+        <div class="skill">TensorFlow</div>
+        <div class="skill">PyTorch</div>
+        <div class="skill">Machine Learning</div>
+        <div class="skill">Statistical Analysis</div>
+        <div class="skill">Data Visualization</div>
+        <div class="skill">SQL</div>
+        <div class="skill">Deep Learning</div>
+        <div class="skill">Data Mining</div>
+        <div class="skill">Bioinformatics</div>
       </div>
     </div>
 
@@ -85,28 +85,6 @@
       if (!href || href.startsWith('http') || href.startsWith('mailto:') || href.startsWith('#')) return;
       if (href === currentPath) link.classList.add('is-active');
     });
-    // Fade-in animation on scroll (normal behavior)
-    const faders = document.querySelectorAll('.fade-in');
-    if ('IntersectionObserver' in window) {
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.1 });
-      faders.forEach(f => observer.observe(f));
-    } else {
-      // Fallback: show all fade-in elements immediately
-      faders.forEach(f => f.classList.add('visible'));
-    }
-    // Always show skills if fade-in fails for any reason
-    setTimeout(() => {
-      document.querySelectorAll('.fade-in').forEach(f => {
-        if (!f.classList.contains('visible')) f.classList.add('visible');
-      });
-    }, 800);
     // Back to top button
     const backToTop = document.getElementById('back-to-top');
     backToTop.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });

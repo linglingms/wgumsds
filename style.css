@@ -486,43 +486,22 @@ nav a:hover, nav a.is-active {
 /* Slideshow Gallery */
 .slideshow-container {
   width: 100%;
-  overflow: hidden;
+  overflow: visible;
   border-radius: 14px;
   background: #0a0a0a;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  padding: 1.5rem;
 }
 
 .slides-wrapper {
-  display: flex;
-  overflow-x: auto;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1.5rem;
-  padding: 1.5rem;
-  scroll-behavior: smooth;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(143, 193, 169, 0.5) transparent;
-}
-
-.slides-wrapper::-webkit-scrollbar {
-  height: 8px;
-}
-
-.slides-wrapper::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.slides-wrapper::-webkit-scrollbar-thumb {
-  background: rgba(143, 193, 169, 0.5);
-  border-radius: 4px;
-}
-
-.slides-wrapper::-webkit-scrollbar-thumb:hover {
-  background: rgba(143, 193, 169, 0.7);
 }
 
 .slide {
-  flex: 0 0 auto;
-  width: 360px;
-  aspect-ratio: auto;
+  width: 100%;
+  aspect-ratio: 1 / 1;
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
@@ -553,27 +532,6 @@ nav a:hover, nav a.is-active {
   transform: scale(1.05);
 }
 
-.slide-caption {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.5), transparent);
-  color: #ffffff;
-  padding: 1.5rem 1rem 1rem;
-  font-size: 0.95rem;
-  font-weight: 500;
-  text-align: center;
-  opacity: 0;
-  transform: translateY(10px);
-  transition: opacity 0.3s, transform 0.3s;
-}
-
-.slide:hover .slide-caption {
-  opacity: 1;
-  transform: translateY(0);
-}
-
 /* Fade-in */
 .fade-in {
   opacity: 0;
@@ -587,18 +545,14 @@ nav a:hover, nav a.is-active {
 
 /* Slideshow Responsive */
 @media (max-width: 1024px) {
-  .slide {
-    width: 300px;
+  .slides-wrapper {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
 @media (max-width: 700px) {
-  .slide {
-    width: 240px;
-  }
-  .slide-caption {
-    font-size: 0.85rem;
-    padding: 1rem 0.8rem 0.8rem;
+  .slides-wrapper {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -923,5 +877,4 @@ footer p {
   color: #ffffff;
   font-weight: 600;
 }
-
 

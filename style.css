@@ -42,9 +42,9 @@ html {
 header {
   width: 100%;
   position: relative;
-  background: linear-gradient(135deg, rgba(23,36,71,0.82), rgba(27,59,47,0.82)), url('bioinfo-background.webp');
+  background: linear-gradient(135deg, rgba(23,36,71,0.78), rgba(27,59,47,0.78)), url('header-city-view.jpg');
   background-size: cover;
-  background-position: center;
+  background-position: center 62%;
   z-index: 1000;
   padding: 0.5rem 0;
   display: flex;
@@ -877,4 +877,3 @@ footer p {
   color: #ffffff;
   font-weight: 600;
 }
-

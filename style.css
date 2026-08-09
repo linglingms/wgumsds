@@ -17,7 +17,7 @@
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
-  background: linear-gradient(rgba(128,128,128,0.1), rgba(128,128,128,0.1)), url('main-body-bg.jpg') no-repeat center top fixed;
+  background: linear-gradient(rgba(190,190,190,0.38), rgba(190,190,190,0.38)), url('main-body-bg.jpg') no-repeat center top fixed;
   background-size: cover;
   color: var(--fg);
   line-height: 1.7;
@@ -244,10 +244,11 @@ nav a:hover, nav a.is-active {
 /* Skills Grid */
 #skills .skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   align-items: stretch;
   gap: 0.9rem;
   width: 100%;
+  box-sizing: border-box;
   background: linear-gradient(135deg, rgba(27, 59, 47, 0.82), rgba(18, 46, 84, 0.82));
   border: 1px solid rgba(143, 193, 169, 0.24);
   border-radius: 16px;
@@ -281,6 +282,12 @@ nav a:hover, nav a.is-active {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
   background: linear-gradient(135deg, rgba(85, 140, 110, 0.82), rgba(60, 110, 90, 0.82));
   border-color: rgba(143, 193, 169, 0.62);
+}
+
+#skills.section {
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Sections */
@@ -347,8 +354,14 @@ nav a:hover, nav a.is-active {
 
 .timeline-content {
   display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1.2rem;
+}
+
+.timeline-text {
+  flex: 1 1 auto;
+  min-width: 0;
 }
 
 .timeline-content h3 {
@@ -376,6 +389,24 @@ nav a:hover, nav a.is-active {
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
+}
+
+.timeline-logo {
+  flex: 0 0 92px;
+  width: 92px;
+  aspect-ratio: 1 / 1;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.45);
+  background: #111;
+}
+
+.timeline-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .timeline-content li {
@@ -558,21 +589,34 @@ nav a:hover, nav a.is-active {
 
 /* Responsive adjustments */
 @media (max-width: 1024px) {
+  #skills .skills-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
   nav a, .resume-btn { font-size: 0.95rem; padding: 0.28rem 0.7rem; }
   .header-container { flex-direction: column; gap: 1rem; padding: 0.5rem 1rem; }
 }
 
 @media (max-width: 700px) {
   #skills .skills-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   nav a, .resume-btn { font-size: 0.9rem; padding: 0.22rem 0.6rem; }
   .profile-pic { width: 60px; height: 60px; }
   .header-container { padding: 0.5rem 0.5rem; }
+  .timeline-content {
+    flex-direction: column-reverse;
+  }
+  .timeline-logo {
+    width: 84px;
+    flex-basis: 84px;
+  }
 }
 
 @media (max-width: 560px) {
+  #skills .skills-grid {
+    grid-template-columns: 1fr;
+  }
   nav a, .resume-btn { font-size: 0.82rem; padding: 0.2rem 0.5rem; }
   .header-text h1 { font-size: 1.15rem; }
   .header-text .tagline { font-size: 0.86rem; }

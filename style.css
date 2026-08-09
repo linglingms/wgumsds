@@ -17,7 +17,7 @@
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
-  background: url('IMG_2798.jpeg') no-repeat center top fixed;
+  background: url('main-body-bg.jpg') no-repeat center top fixed;
   background-size: cover;
   color: var(--fg);
   line-height: 1.7;

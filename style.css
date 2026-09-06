@@ -17,7 +17,7 @@
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
-  background: linear-gradient(rgba(190,190,190,0.38), rgba(190,190,190,0.38)), url('main-body-bg.jpg') no-repeat center top fixed;
+  background: url('https://file+.vscode-resource.vscode-cdn.net/private/var/folders/b3/slpb459x3wl60dp2s104f52w0000gn/T/chemistry-icon-doodle-style-burner-flask-dna-structure-formulas-organic-substances-vector-illustration-63821407.webp?version%3D1788669333017') no-repeat center top fixed;
   background-size: cover;
   color: var(--fg);
   line-height: 1.7;
